@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@300;500&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  @variants responsive {
+    .span-2 {
+      width: 63% !important;
+    }
+    .text-bg {
+      background-color: #2d2d2d;
+      padding: 1px 3px;
+      color: #fff;
+    }
+    .fix-height {
+      min-height: 28px;
+      max-height: 28px;
+    }
+  }
+}
+
+.gatsby-resp-image-link {
+  border-radius: 4px;
+}
+
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 1.5rem; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  margin-bottom: 1.5rem;
+}
