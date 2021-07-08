@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  repo: tsaristbomba/page-blog-starter
+  repo: tsaristbomba/blog-starter
   branch: master
 
 media_folder: content/assets

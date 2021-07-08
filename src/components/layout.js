@@ -36,11 +36,20 @@ const Layout = props => {
           </li>
           <li>
             <Link
-              className="font-encode font-light text-gray-400 p-4 px-4 pr-0 hover:text-gray-900 text-md transition-colors ease-in-out"
+              className="font-encode font-light text-gray-400 p-4 px-4 hover:text-gray-900 text-md transition-colors ease-in-out"
               to="/archive"
               activeClassName="text-gray-900"
             >
               ARQUIVO
+            </Link>
+          </li>
+          <li>
+            <Link
+              className="font-encode font-light text-gray-400 p-4 px-4 pr-0 hover:text-gray-900 text-md transition-colors ease-in-out"
+              to="/about"
+              activeClassName="text-gray-900"
+            >
+              SOBRE
             </Link>
           </li>
         </ul>

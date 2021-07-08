@@ -11,7 +11,7 @@ const BlogIndex = ({ data, location }) => {
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
-        <Seo title="All posts" />
+        <Seo title="Arquivo" />
         <div className="flex flex-row items-center">
           <SleepIcon className="mr-2 text-2xl" />
           <span> Sem blogs postados.</span>
@@ -22,7 +22,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout transparent light sticky rounded="true">
-      <Seo title="All posts" />
+      <Seo title="Arquivo" />
       <ol className="list-disc pl-5">
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
