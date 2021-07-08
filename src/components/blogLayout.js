@@ -1,14 +1,12 @@
 import * as React from "react"
 import styled from "styled-components"
-import colors from "../templates/colors"
 
 const Main = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 1rem auto 1rem auto;
+  margin: 5px auto 1rem auto;
   max-width: 1150px;
-  padding: 1rem;
 
   a {
     text-decoration: none;
@@ -19,7 +17,6 @@ const Main = styled.main`
     transition: all 0.2s ease-in-out;
 
     :hover {
-      /* color: ${colors.primary}; */
       text-decoration: underline;
     }
   }
@@ -42,7 +39,6 @@ const Main = styled.main`
   td,
   th {
     border: 1px solid #333;
-    /* padding: 10px; */
   }
 
   td,
@@ -51,7 +47,6 @@ const Main = styled.main`
   }
 
   table {
-    /* width: 100%; */
     border-collapse: collapse;
     margin: 1rem auto;
     padding: 1rem 0;
@@ -103,7 +98,6 @@ const Main = styled.main`
 
   pre,
   blockquote {
-    /* background-color: #f9f9f9; */
     background-color: #d8d6d6;
     page-break-inside: avoid;
     border-radius: 4px;

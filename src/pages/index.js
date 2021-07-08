@@ -1,28 +1,27 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Masonry from "react-masonry-css"
+import { RiZzzFill as SleepIcon } from "@react-icons/all-files/ri/RiZzzFill"
 
 import {
   GatsbyImage as Image,
   filterImageString,
 } from "@tsaristbomba/gatsby-theme-bomba"
-// import BlogLayout from "../components/blogLayout"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+  // const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
   if (posts.length === 0) {
     return (
       <Layout>
         <Seo title="All posts" />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
+        <div className="flex flex-row items-center">
+          <SleepIcon className="mr-2 text-2xl" />
+          <span> Sem blogs postados.</span>
+        </div>
       </Layout>
     )
   }
@@ -56,7 +55,7 @@ const BlogIndex = ({ data, location }) => {
                     <header>
                       <h2 className="font-thin">
                         <Link
-                          className="text-xl text-gray-500 font-semibold cursor-pointer hover:text-gray-900 transition-colors ease-in-out"
+                          className="text-xl text-gray-500 font-semibold cursor-pointer hover:text-gray-900 hover:underline transition-colors ease-in-out"
                           to={`/blog${post.fields.slug}`}
                           itemProp="url"
                         >
@@ -77,7 +76,7 @@ const BlogIndex = ({ data, location }) => {
                         </Link>
                       </h2>
                       <small className="text-gray-400 text-xs">
-                        {post.frontmatter.date}
+                        {post.frontmatter.date} &bull; {post.timeToRead} min.
                       </small>
                     </header>
                     <section>
@@ -112,6 +111,7 @@ export const pageQuery = graphql`
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       nodes {
         excerpt
+        timeToRead
         fields {
           slug
         }

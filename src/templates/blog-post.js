@@ -38,7 +38,7 @@ const BlogPostTemplate = ({ data, location }) => {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <div className="font-encode shadow-xl">
+        <div className="font-encode shadow-xl text-2xl md:text-6xl">
           <Hero
             data={{
               //   topTitle: "Its Easy!",
@@ -67,7 +67,8 @@ const BlogPostTemplate = ({ data, location }) => {
             <header>
               <h1 itemProp="headline">{post.frontmatter.title}</h1>
               <small className="text-gray-500 text-xs">
-                {post.frontmatter.date}
+                {post.frontmatter.date} &bull; {post.timeToRead} minutos de
+                leitura.
               </small>
             </header>
             <section
@@ -125,6 +126,7 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      timeToRead
       frontmatter {
         title
         date(formatString: "DD/MM/YYYY", locale: "pt-br")

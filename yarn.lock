@@ -1901,10 +1901,10 @@
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.1.1.tgz#3348564048e7a2d7398c935d466c0414ebb6a669"
   integrity sha512-Z6DoceYb/1xSg5+e+ZlPZ9v0N16ZvZ+wYMraFue4HYrE4ttONKtsvruIRf6t9TBR0YvSOfi1hUU0fJfBLCDYow==
 
-"@tsaristbomba/gatsby-theme-bomba@^1.0.97":
-  version "1.0.97"
-  resolved "https://registry.yarnpkg.com/@tsaristbomba/gatsby-theme-bomba/-/gatsby-theme-bomba-1.0.97.tgz#bc0b1fd7a22c703d61373db561c0676c1e828ecc"
-  integrity sha512-NTQilYmMNChBTKKE0kR1y5PfYykT+L35F2+rYAQNfif/DqjRgO5m1v7OTGanPZ5mjLMmnsEcBwFCVDmYkS1wAw==
+"@tsaristbomba/gatsby-theme-bomba@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@tsaristbomba/gatsby-theme-bomba/-/gatsby-theme-bomba-1.1.1.tgz#e48cf548524ee638a1ff2efda41fafd284275719"
+  integrity sha512-YmKmOU6H39LiAFLu4opggd5vS4IH7jFBMCnJ4rCjHKl8uykhzlC6Ra7eNmEHMdIoAlENAojOVOBt+U6OOxp/uA==
   dependencies:
     "@react-icons/all-files" "^4.1.0"
     babel-plugin-styled-components "^1.12.0"

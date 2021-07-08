@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
-    "@tsaristbomba/gatsby-theme-bomba": "^1.0.97",
+    "@tsaristbomba/gatsby-theme-bomba": "^1.1.1",
     "autoprefixer": "^10.2.6",
     "babel-plugin-styled-components": "^1.12.0",
     "cross-env": "^7.0.3",

@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-
 import { Seo } from "@tsaristbomba/gatsby-theme-bomba"
+import { RiZzzFill as SleepIcon } from "@react-icons/all-files/ri/RiZzzFill"
 import Layout from "../components/layout"
 
 const BlogIndex = ({ data, location }) => {
@@ -12,11 +12,10 @@ const BlogIndex = ({ data, location }) => {
     return (
       <Layout location={location} title={siteTitle}>
         <Seo title="All posts" />
-        <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
-        </p>
+        <div className="flex flex-row items-center">
+          <SleepIcon className="mr-2 text-2xl" />
+          <span> Sem blogs postados.</span>
+        </div>
       </Layout>
     )
   }
