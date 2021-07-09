@@ -1,89 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `Luden`,
-    seoTitle: `Luden is a great theme`,
-    description: `Luden is a great theme`,
+    title: `Blog Starter`,
+    seoTitle: `Blog Starter`,
+    description: `Blog Starter`,
     author: `@tsaristbomba`,
     siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
-    image: "/june.png",
-    logo: "logo.svg",
-    form: false,
-    svgImgs: false,
-    attach: false,
-    anchorLinks: false,
-    scrollBtn: true,
-    icons: false,
-    wave: true,
-    triangle: false,
-    curve: false,
-    tilt: false,
-    themes: {
-      light: {
-        title: "light",
-        colors: {
-          primary: "#9ca3af", // Brand color
-          primaryDark: "#333",
-          primaryLight: "#D8D6D6", // H
-          secondary: "#333",
-          secondaryLight: "#9ca3af",
-          neutralDark: "#333", // Text color
-          neutralMedium: "#D8D6D6", // Heavier medium (gotta be gray)
-          neutralLight: "#fff", // bg color
-        },
-      },
-      dark: {
-        title: "dark",
-        colors: {
-          primary: "#B36900", // Brand color
-          primaryDark: "#FFA729",
-          primaryLight: "#484848", // H
-          secondary: "#FFA729",
-          secondaryLight: "#B36900",
-          neutralDark: "#fff", // Text color
-          neutralMedium: "#777777", // Heavier medium (gotta be gray)
-          neutralLight: "#2d2d2d", // bg color
-        },
-      },
-    },
-    footerLinks: [
-      {
-        title: "Learn About Us",
-        links: [
-          { title: "About", slug: "#About" },
-          {
-            title: "Services",
-            slug: "#Services",
-          },
-          { title: "Team", slug: "#Team" },
-          { title: "Contact", slug: "#Contact" },
-          { title: "Plans", slug: "#Plans" },
-          { title: "Newsletter", slug: "#Banner" },
-        ],
-      },
-      {
-        title: "Legal",
-        links: [
-          { title: "Terms & Conditions", slug: "terms-conditions" },
-          { title: "Privacy Policy", slug: "privacy-policy" },
-        ],
-      },
-    ],
-    navLinks: [
-      {
-        name: "Blog",
-        slug: "blog",
-      },
-    ],
-    socials: [
-      { title: "INSTAGRAM", link: "https://instagram.com/archilect" },
-      { title: "YOUTUBE", link: "https://youtube.com/pewdiepie" },
-      { title: "TWITTER", link: "https://twitter.com/naval" },
-      { title: "WHATSAPP", link: "https://twitter.com/naval" },
-    ],
-    social: {
-      github: `tsaristbomba`,
-      twitter: ``,
-    },
   },
   flags: {
     PARALLEL_SOURCING: true,
@@ -91,7 +12,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-postcss`,
     `gatsby-plugin-image`,
-    `@tsaristbomba/gatsby-theme-bomba`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify-cms`,
     {
@@ -217,16 +137,14 @@ module.exports = {
         name: `Gatsby Starter Blog`,
         short_name: `GatsbyJS`,
         start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#FFA729`,
+        background_color: `#6b7280`,
+        theme_color: `#333`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
         lang: `pt-br`,
       },
     },
     `gatsby-plugin-react-helmet`,
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
   ],
 }

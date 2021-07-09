@@ -1,35 +1,17 @@
 import React from "react"
-import {
-  getMetadata,
-  useQuerySvg,
-  Image,
-  AltLayout,
-  ButtonLink,
-  ErrorContainer,
-} from "@tsaristbomba/gatsby-theme-bomba"
-import data from "../gatsby-theme-bomba/data/infoData"
+import Seo from "../components/seo"
+import Layout from "../components/layout"
+import { RiBugLine as ErrorIcon } from "@react-icons/all-files/ri/RiBugLine"
 
 const ErrorPage = () => {
-  const { logo, title } = getMetadata().meta.siteMetadata
-  const { description, buttonLabel } = data.error
-
   return (
-    <AltLayout>
-      <ErrorContainer>
-        <div>
-          <Image normalize light src={useQuerySvg(logo)} alt={title} svg />
-          <h1>{description}</h1>
-          <ButtonLink
-            slug="/"
-            ariaLabel={buttonLabel}
-            title="home"
-            rounded="true"
-          >
-            {buttonLabel}
-          </ButtonLink>
-        </div>
-      </ErrorContainer>
-    </AltLayout>
+    <Layout>
+      <Seo title="Error" />
+      <div className="flex flex-row items-center">
+        <ErrorIcon className="mr-2 text-2xl" />
+        <span> 404 Error.</span>
+      </div>
+    </Layout>
   )
 }
 

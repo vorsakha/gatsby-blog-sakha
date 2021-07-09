@@ -2,9 +2,15 @@ import React from "react"
 import { Link } from "gatsby"
 import { AiFillInstagram as InstagramIcon } from "@react-icons/all-files/ai/AiFillInstagram"
 import { FaFacebookSquare as FacebookIcon } from "@react-icons/all-files/fa/FaFacebookSquare"
+import ScrollButton from "./Scroll/Scroll"
+import ProgressBar from "./ProgressBar"
 
 const Layout = props => {
   const year = new Date().getFullYear()
+
+  // Progress bar
+  const colors = { primary: "#6B7280", primaryDark: "#333" }
+  //
 
   return (
     <div
@@ -54,6 +60,15 @@ const Layout = props => {
           </li>
         </ul>
       </nav>
+      {props.scroll && (
+        <ScrollButton
+          data={{
+            message: "Para o topo",
+          }}
+          rounded="true"
+        />
+      )}
+      {props.progress && <ProgressBar regular colors={colors} />}
       <div
         style={{ minHeight: "calc(100vh - 180px - 57px - 32px - 16px - 24px)" }}
       >

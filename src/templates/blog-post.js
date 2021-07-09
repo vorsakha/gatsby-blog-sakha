@@ -1,21 +1,13 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 
-import {
-  BlogHero as Hero,
-  Layout as ThemeLayout,
-  Seo,
-  ProgressBar,
-} from "@tsaristbomba/gatsby-theme-bomba"
 import BlogLayout from "../components/blogLayout"
 import Layout from "../components/layout"
+import Seo from "../components/seo"
+import BlogHero from "../components/BlogHero"
 
 const BlogPostTemplate = ({ data, location }) => {
   const [queryImg, setQuery] = React.useState()
-
-  // Progress bar
-  const colors = { primary: "#6B7280", primaryDark: "#333" }
-  //
 
   const post = data.markdownRemark
   // const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -31,80 +23,77 @@ const BlogPostTemplate = ({ data, location }) => {
   }, [])
 
   return (
-    <Layout>
-      <ProgressBar regular colors={colors} />
-      <ThemeLayout light sticky rounded="true" progress nonav nofooter>
-        <Seo
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+    <Layout scroll progress>
+      <Seo
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+      />
+      <div className="font-encode shadow-xl text-2xl md:text-6xl">
+        <BlogHero
+          data={{
+            //   topTitle: "Its Easy!",
+            title: post.frontmatter.title,
+            image: queryImg,
+          }}
+          // full={!svgImgs}
+          bg
+          grayscale
+          thin="true"
+          // svg={svgImgs}
+          center
+          small
+          rounded="true"
+          short
+          // shadow="true"
+          //   anchor={hero.anchor}
         />
-        <div className="font-encode shadow-xl text-2xl md:text-6xl">
-          <Hero
-            data={{
-              //   topTitle: "Its Easy!",
-              title: post.frontmatter.title,
-              image: queryImg,
-            }}
-            // full={!svgImgs}
-            bg
-            grayscale
-            thin="true"
-            // svg={svgImgs}
-            center
-            small
-            rounded="true"
-            short
-            // shadow="true"
-            //   anchor={hero.anchor}
-          />
-        </div>
+      </div>
 
-        <BlogLayout shadow="true">
-          {/* <small style={{ fontWeight: "400" }}>
+      <BlogLayout shadow="true">
+        {/* <small style={{ fontWeight: "400" }}>
             <Link to="/">← Home</Link>
           </small> */}
-          <article>
-            <header>
-              <h1 itemProp="headline">{post.frontmatter.title}</h1>
-              <small className="text-gray-500 text-xs">
-                {post.frontmatter.date} &bull; {post.timeToRead} minutos de
-                leitura.
-              </small>
-            </header>
-            <section
-              dangerouslySetInnerHTML={{ __html: post.html }}
-              itemProp="articleBody"
-            />
-            <hr />
-          </article>
-          <nav className="blog-post-nav">
-            <ul
-              style={{
-                display: `flex`,
-                flexWrap: `wrap`,
-                justifyContent: `space-between`,
-                listStyle: `none`,
-                padding: 0,
-              }}
-            >
-              <li>
-                {previous && (
-                  <Link to={`/blog${previous.fields.slug}`} rel="prev">
-                    ← {previous.frontmatter.title}
-                  </Link>
-                )}
-              </li>
-              <li>
-                {next && (
-                  <Link to={`/blog${next.fields.slug}`} rel="next">
-                    {next.frontmatter.title} →
-                  </Link>
-                )}
-              </li>
-            </ul>
-          </nav>
-        </BlogLayout>
-      </ThemeLayout>
+        <article>
+          <header>
+            <h1 itemProp="headline">{post.frontmatter.title}</h1>
+            <small className="text-gray-500 text-xs">
+              {post.frontmatter.date} &bull; {post.timeToRead} minutos de
+              leitura.
+            </small>
+          </header>
+          <section
+            dangerouslySetInnerHTML={{ __html: post.html }}
+            itemProp="articleBody"
+          />
+          <hr />
+        </article>
+        <nav className="blog-post-nav">
+          <ul
+            style={{
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0,
+            }}
+          >
+            <li>
+              {previous && (
+                <Link to={`/blog${previous.fields.slug}`} rel="prev">
+                  ← {previous.frontmatter.title}
+                </Link>
+              )}
+            </li>
+            <li>
+              {next && (
+                <Link to={`/blog${next.fields.slug}`} rel="next">
+                  {next.frontmatter.title} →
+                </Link>
+              )}
+            </li>
+          </ul>
+        </nav>
+      </BlogLayout>
     </Layout>
   )
 }

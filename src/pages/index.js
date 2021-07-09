@@ -2,13 +2,12 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Masonry from "react-masonry-css"
 import { RiZzzFill as SleepIcon } from "@react-icons/all-files/ri/RiZzzFill"
-
-import {
-  GatsbyImage as Image,
-  filterImageString,
-} from "@tsaristbomba/gatsby-theme-bomba"
+import GatsbyImage from "../components/common/GatsbyImage"
+import filterImageString from "../functions/filterImageString"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
+
+// BUG FETCHING IMAGES
 
 const BlogIndex = ({ data, location }) => {
   // const siteTitle = data.site.siteMetadata?.title || `Title`
@@ -17,7 +16,7 @@ const BlogIndex = ({ data, location }) => {
   if (posts.length === 0) {
     return (
       <Layout>
-        <Seo title="All posts" />
+        <Seo title="Home" />
         <div className="flex flex-row items-center">
           <SleepIcon className="mr-2 text-2xl" />
           <span> Sem blogs postados.</span>
@@ -34,7 +33,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout>
-      <Seo title="All posts" />
+      <Seo title="Home" />
       <div>
         <ol>
           <Masonry
@@ -42,7 +41,7 @@ const BlogIndex = ({ data, location }) => {
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {posts.map((post, key) => {
+            {posts.map(post => {
               const title = post.frontmatter.title || post.fields.slug
 
               return (
@@ -59,8 +58,9 @@ const BlogIndex = ({ data, location }) => {
                           to={`/blog${post.fields.slug}`}
                           itemProp="url"
                         >
-                          <Image
+                          <GatsbyImage
                             image={filterImageString(post.frontmatter.image)}
+                            // image={"default"}
                             rounded
                             grayscale
                             shadow

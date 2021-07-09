@@ -1,12 +1,13 @@
 import * as React from "react"
-import { Seo, GatsbyImage } from "@tsaristbomba/gatsby-theme-bomba"
+import GatsbyImage from "../components/common/GatsbyImage"
 import Layout from "../components/layout"
+import Seo from "../components/seo"
 
 const BlogIndex = () => {
   //   const siteTitle = data.site.siteMetadata?.title || `Title`
 
   return (
-    <Layout transparent light sticky rounded="true">
+    <Layout>
       <Seo title="Sobre" />
       <div className="grid md:grid-cols-3 gap-6 mt-2 mb-4 items-center">
         <div className="md:col-span-2">
@@ -26,7 +27,13 @@ const BlogIndex = () => {
           </p>
         </div>
         <div>
-          <GatsbyImage image="jumba" alt="Dande" rounded="true" shadow="true" />
+          <GatsbyImage
+            image="jumba"
+            alt="Dande"
+            rounded="true"
+            shadow="true"
+            grayscale
+          />
         </div>
       </div>
     </Layout>

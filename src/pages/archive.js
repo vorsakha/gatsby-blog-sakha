@@ -1,8 +1,8 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import { Seo } from "@tsaristbomba/gatsby-theme-bomba"
 import { RiZzzFill as SleepIcon } from "@react-icons/all-files/ri/RiZzzFill"
 import Layout from "../components/layout"
+import Seo from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
