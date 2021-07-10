@@ -6,12 +6,17 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+// Utilities
+import getMetadata from "../functions/getMetadata"
+
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext
   const { edges, totalCount } = data.allMarkdownRemark
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`
+
+  const { primary, tertiary } = getMetadata().site.siteMetadata.colors
 
   return (
     <Layout>
@@ -26,6 +31,11 @@ const Tags = ({ pageContext, data }) => {
               <Link
                 className="p-4 px-4 pl-0 mr-1 font-thin text-bg hover:underline"
                 to={`/blog${slug}`}
+                style={{
+                  color: tertiary,
+                  padding: "1px 3px",
+                  backgroundColor: primary,
+                }}
               >
                 {title}
               </Link>

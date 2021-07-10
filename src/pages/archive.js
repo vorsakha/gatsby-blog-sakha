@@ -21,7 +21,7 @@ const BlogIndex = ({ data, location }) => {
         <Seo title="Archive" />
         <div className="flex flex-row items-center">
           <SleepIcon className="mr-2 text-2xl" />
-          <span> Sem blogs postados.</span>
+          <span> No blog posts yet.</span>
         </div>
       </Layout>
     )
