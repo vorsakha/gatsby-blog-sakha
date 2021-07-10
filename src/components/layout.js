@@ -96,7 +96,7 @@ const Layout = props => {
       </div>
 
       <footer
-        className="flex flex-row items-center justify-between m-auto border-t border-gray-300"
+        className="flex flex-row items-center justify-between m-auto border-t border-gray-300 mt-4"
         style={{ color: primary }}
       >
         <div className="flex flex-row">
