@@ -2,15 +2,14 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Masonry from "react-masonry-css"
 import { RiZzzFill as SleepIcon } from "@react-icons/all-files/ri/RiZzzFill"
-import GatsbyImage from "../components/common/GatsbyImage"
+import ImageComponent from "../components/common/ImageComponent"
 import filterImageString from "../functions/filterImageString"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
 
 // BUG FETCHING IMAGES
 
-const BlogIndex = ({ data, location }) => {
-  // const siteTitle = data.site.siteMetadata?.title || `Title`
+const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes
 
   if (posts.length === 0) {
@@ -58,13 +57,12 @@ const BlogIndex = ({ data, location }) => {
                           to={`/blog${post.fields.slug}`}
                           itemProp="url"
                         >
-                          <GatsbyImage
+                          <ImageComponent
                             image={filterImageString(post.frontmatter.image)}
-                            // image={"default"}
                             rounded
                             grayscale
                             shadow
-                            cursor="true"
+                            hover
                             alt={title}
                           />
                           <span

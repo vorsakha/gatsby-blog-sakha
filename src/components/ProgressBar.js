@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import PropTypes from "prop-types"
 
 const BarContainer = styled.div`
   position: fixed;
@@ -52,6 +53,12 @@ const ProgressBar = ({ thick, regular, colors }) => {
       />
     </BarContainer>
   )
+}
+
+ProgressBar.propTypes = {
+  thick: PropTypes.bool,
+  regular: PropTypes.bool,
+  colors: PropTypes.object,
 }
 
 export default ProgressBar

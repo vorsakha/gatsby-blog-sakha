@@ -6,7 +6,8 @@ import BgHeroBlog from "./common/BgHeroBlog"
 const BgItems = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: ${({ short }) => (short ? "100vw" : "1150px")};
+  max-width: 100vw;
+  align-items: center;
   width: 100%;
   margin: 0 auto;
   background: transparent;
@@ -16,25 +17,18 @@ const BgItemsChildren = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: ${({ side }) => (side ? "flex-start" : "center")};
   max-width: 600px;
-  min-height: ${({ small, short }) =>
-    small ? "200px" : short ? "150px" : "600px"};
-  height: ${({ small, short }) =>
-    small ? "200px" : short ? "150px" : "calc(100vh - 80px)"};
+  height: 100%;
   max-height: 100%;
   color: #fff;
   line-height: 1;
   width: 100%;
-  margin: ${({ side }) => (side ? "0" : "0 auto")};
-  padding-left: ${({ side }) => (side ? "1rem" : "0")};
-  padding-right: ${({ side }) => (side ? "1rem" : "0")};
-  padding-top: ${({ short }) => (short ? "0" : "80px")};
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
 
   h1 {
-    margin-bottom: 1rem;
-    /* font-size: 3rem; */
-    /* line-height: 3rem; */
     width: 100%;
     text-transform: uppercase;
     font-weight: ${({ thin }) => (thin ? "300" : " bold")};
@@ -47,40 +41,22 @@ const BgItemsChildren = styled.div`
   }
 
   @media screen and (min-width: 768px) {
-    height: ${({ small, short }) =>
-      small ? "300px" : short ? "250px" : "calc(100vh - 80px)"};
-    min-height: ${({ small, short }) =>
-      small ? "300px" : short ? "250px" : "600px"};
+    height: 250px;
+    min-height: 250px;
   }
 `
 
-const Hero = ({
-  rounded,
-  data,
-  small,
-  attach,
-  side,
-  full,
-  short,
-  margintop,
-  grayscale,
-  thin,
-}) => {
+const Hero = ({ rounded, data, attach, grayscale, thin }) => {
   return (
     <>
       <BgHeroBlog
         attach={attach}
-        small={small}
         image={data.image}
-        gradient="true"
-        hero={margintop}
-        side={side}
-        full={full}
         rounded={rounded}
         grayscale={grayscale}
       >
-        <BgItems side={side}>
-          <BgItemsChildren small={small} thin={thin} side={side} short={short}>
+        <BgItems>
+          <BgItemsChildren thin={thin}>
             <h1>{data.title}</h1>
           </BgItemsChildren>
         </BgItems>
@@ -90,10 +66,11 @@ const Hero = ({
 }
 
 Hero.propTypes = {
-  data: PropTypes.object.isRequired,
-  fade: PropTypes.bool,
-  svg: PropTypes.bool,
-  home: PropTypes.bool,
+  rounded: PropTypes.bool,
+  data: PropTypes.object,
+  attach: PropTypes.bool,
+  grayscale: PropTypes.bool,
+  thin: PropTypes.bool,
 }
 
 export default Hero

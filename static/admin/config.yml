@@ -5,7 +5,7 @@ backend:
 
 media_folder: content/assets
 public_folder: ../assets
-locale: "pt"
+locale: "en"
 
 collections:
   - name: blog
@@ -14,7 +14,8 @@ collections:
     create: true
     fields:
       - { name: date, label: Data, widget: date }
-      - { name: image, label: Imagem Thumbnail, widget: image, required: false }
-      - { name: title, label: Título }
-      - { name: description, label: Descrição }
-      - { name: body, label: Texto, widget: markdown }
+      - { name: image, label: Thumbnail Image, widget: image, required: false }
+      - { name: title, label: Title }
+      - { name: tags, label: Tags, widget: list }
+      - { name: description, label: Description }
+      - { name: body, label: Post, widget: markdown }

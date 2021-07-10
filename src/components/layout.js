@@ -23,10 +23,10 @@ const Layout = props => {
             className="font-encode text-gray-900 flex flex-row w-full items-center text-3xl md:text-6xl font-bold"
             to="/"
           >
-            Dande Steel Smith
+            Lorem, ipsum dolor.
           </Link>
           <p className="text-gray-400 font-thin text-md md:text-xl">
-            Lastima / Mau aluno / Xinga a mãe
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
           </p>
         </div>
 
@@ -46,7 +46,7 @@ const Layout = props => {
               to="/archive"
               activeClassName="text-gray-900"
             >
-              ARQUIVO
+              ARCHIVE
             </Link>
           </li>
           <li>
@@ -55,7 +55,7 @@ const Layout = props => {
               to="/about"
               activeClassName="text-gray-900"
             >
-              SOBRE
+              ABOUT
             </Link>
           </li>
         </ul>
@@ -63,7 +63,7 @@ const Layout = props => {
       {props.scroll && (
         <ScrollButton
           data={{
-            message: "Para o topo",
+            message: "To the top",
           }}
           rounded="true"
         />

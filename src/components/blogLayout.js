@@ -1,5 +1,6 @@
 import * as React from "react"
 import styled from "styled-components"
+import PropTypes from "prop-types"
 
 const Main = styled.main`
   display: flex;
@@ -122,6 +123,11 @@ const Main = styled.main`
 
 const BlogLayout = ({ children, shadow }) => {
   return <Main shadow={shadow}>{children}</Main>
+}
+
+BlogLayout.propTypes = {
+  children: PropTypes.node.isRequired,
+  shadow: PropTypes.bool,
 }
 
 export default BlogLayout

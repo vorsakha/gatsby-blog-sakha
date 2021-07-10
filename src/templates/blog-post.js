@@ -1,16 +1,19 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
+import PropTypes from "prop-types"
 
 import BlogLayout from "../components/blogLayout"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import BlogHero from "../components/BlogHero"
 
-const BlogPostTemplate = ({ data, location }) => {
+// Utilities
+import kebabCase from "lodash/kebabCase"
+
+const BlogPostTemplate = ({ data }) => {
   const [queryImg, setQuery] = React.useState()
 
   const post = data.markdownRemark
-  // const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
 
   React.useEffect(() => {
@@ -31,34 +34,29 @@ const BlogPostTemplate = ({ data, location }) => {
       <div className="font-encode shadow-xl text-2xl md:text-6xl">
         <BlogHero
           data={{
-            //   topTitle: "Its Easy!",
             title: post.frontmatter.title,
             image: queryImg,
           }}
-          // full={!svgImgs}
-          bg
           grayscale
-          thin="true"
-          // svg={svgImgs}
-          center
-          small
-          rounded="true"
-          short
-          // shadow="true"
-          //   anchor={hero.anchor}
+          thin
+          rounded
+          //attach
         />
       </div>
 
-      <BlogLayout shadow="true">
-        {/* <small style={{ fontWeight: "400" }}>
-            <Link to="/">← Home</Link>
-          </small> */}
+      <BlogLayout shadow>
         <article>
           <header>
             <h1 itemProp="headline">{post.frontmatter.title}</h1>
             <small className="text-gray-500 text-xs">
-              {post.frontmatter.date} &bull; {post.timeToRead} minutos de
-              leitura.
+              {post.frontmatter.date} &bull; {post.timeToRead}{" "}
+              {post.timeToRead === 1 ? " minute " : " minutes "}read. &bull;
+              tags:
+              {post.frontmatter.tags.map(tag => (
+                <Link className="ml-2" to={`/tags/${kebabCase(tag)}`}>
+                  {tag}
+                </Link>
+              ))}
             </small>
           </header>
           <section
@@ -98,6 +96,10 @@ const BlogPostTemplate = ({ data, location }) => {
   )
 }
 
+BlogPostTemplate.propTypes = {
+  data: PropTypes.object,
+}
+
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
@@ -121,6 +123,7 @@ export const pageQuery = graphql`
         date(formatString: "DD/MM/YYYY", locale: "pt-br")
         description
         image
+        tags
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {

@@ -1,17 +1,15 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import handleHexToRgba from "../../functions/handleHexToRgba"
 import useFilterImage from "../../functions/useFilterImage"
 import PropTypes from "prop-types"
 
 const Img = styled(GatsbyImage)`
-  width: ${({ small }) => (small ? "150px !important" : "100% !important")};
-  height: ${({ small, forceheight }) =>
-    small ? "150px !important" : forceheight ? "100% !important" : "auto"};
+  width: 100% !important;
+  height: ${({ forceheight }) => (forceheight ? "100% !important" : "auto")};
   animation: 0.2s fade;
   overflow: hidden;
-  max-height: ${({ wide }) => (wide ? "600px" : "none")};
+  max-height: none;
   border-radius: ${({ rounded }) => (rounded ? "4px !important" : "0")};
   box-shadow: ${({ shadow }) =>
     shadow
@@ -21,68 +19,51 @@ const Img = styled(GatsbyImage)`
   div {
     justify-content: center;
     border-radius: ${({ rounded }) => (rounded ? "4px !important" : "0")};
-    height: ${({ small, forceheight }) =>
-      small ? "150px !important" : forceheight ? "100% !important" : "auto"};
+    height: ${({ forceheight }) => (forceheight ? "100% !important" : "auto")};
     margin: 0 !important;
   }
 
   img {
-    width: ${({ small }) => (small ? "150px !important" : "100%")};
-    height: ${({ small, forceheight }) =>
-      small ? "150px !important" : forceheight ? "100% !important" : "auto"};
+    width: 100%;
+    height: ${({ forceheight }) => (forceheight ? "100% !important" : "auto")};
     margin: 0 auto;
     align-self: center;
     border-radius: ${({ rounded }) => (rounded ? "4px !important" : "0")};
-    max-height: ${({ wide }) => (wide ? "600px" : "none")};
+    max-height: none;
     transition: opacity 0.25s linear, transform 0.2s ease !important;
 
     :hover {
-      transform: ${({ cursor }) => (cursor ? "scale(1.1)" : "none")};
+      transform: ${({ hover }) => (hover ? "scale(1.1)" : "none")};
     }
   }
-  /* max-width: 100%; */
 
   @media screen and (min-width: 768px) {
     border-radius: ${({ rounded }) => (rounded ? "4px !important" : "0")};
-    cursor: ${({ cursor }) => (cursor ? "pointer" : "auto")};
-    /* box-shadow: ${({ shadow }) =>
-      shadow
-        ? `0px 2px 50px 0px ${handleHexToRgba("#333", 0.3)} !important`
-        : "none"}; */
-
-    /* max-height: ${({ limit }) => (limit ? "350px !important" : "100%")}; */
+    cursor: ${({ hover }) => (hover ? "pointer" : "auto")};
 
     img {
-      max-width: ${({ wide }) => (wide ? "55vw !important" : "none")};
+      max-width: none;
       margin: 0;
     }
   }
 `
 
 const Image = ({
-  onClick,
   rounded,
   image,
-  cursor,
+  hover,
   shadow,
   alt,
-  small,
-  layout,
-  wide,
   forceheight,
   grayscale,
 }) => {
   return (
     <Img
-      onClick={onClick}
       image={useFilterImage(image, grayscale)}
       alt={alt}
       rounded={rounded}
-      cursor={cursor}
+      hover={hover}
       shadow={shadow}
-      small={small}
-      layout={layout}
-      wide={wide}
       forceheight={forceheight}
     />
   )
@@ -90,8 +71,12 @@ const Image = ({
 
 Image.propTypes = {
   image: PropTypes.string,
+  rounded: PropTypes.bool,
   alt: PropTypes.string,
-  layout: PropTypes.string,
+  hover: PropTypes.bool,
+  shadow: PropTypes.bool,
+  forceheight: PropTypes.bool,
+  grayscale: PropTypes.bool,
 }
 
 export default Image

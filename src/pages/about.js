@@ -1,14 +1,12 @@
 import * as React from "react"
-import GatsbyImage from "../components/common/GatsbyImage"
+import ImageComponent from "../components/common/ImageComponent"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogIndex = () => {
-  //   const siteTitle = data.site.siteMetadata?.title || `Title`
-
   return (
     <Layout>
-      <Seo title="Sobre" />
+      <Seo title="About" />
       <div className="grid md:grid-cols-3 gap-6 mt-2 mb-4 items-center">
         <div className="md:col-span-2">
           <p>
@@ -27,11 +25,11 @@ const BlogIndex = () => {
           </p>
         </div>
         <div>
-          <GatsbyImage
-            image="jumba"
+          <ImageComponent
+            image="jumba.jpg" // name of image on src/images
             alt="Dande"
-            rounded="true"
-            shadow="true"
+            rounded
+            shadow
             grayscale
           />
         </div>

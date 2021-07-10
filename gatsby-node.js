@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const _ = require("lodash")
 // const webpack = require(`webpack`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -7,12 +8,13 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const tagTemplate = path.resolve(`./src/templates/tags.js`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
+        postsRemark: allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: ASC }
           limit: 1000
         ) {
@@ -21,12 +23,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             fields {
               slug
             }
+            frontmatter {
+              tags
+            }
+          }
+        }
+        tagsGroup: allMarkdownRemark(limit: 2000) {
+          group(field: frontmatter___tags) {
+            fieldValue
           }
         }
       }
     `
   )
 
+  // Handle errors
   if (result.errors) {
     reporter.panicOnBuild(
       `There was an error loading your blog posts`,
@@ -35,13 +46,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const posts = result.data.allMarkdownRemark.nodes
+  const posts = result.data.postsRemark.nodes
+  const tags = result.data.tagsGroup.group
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
   if (posts.length > 0) {
+    //Posts pages
     posts.forEach((post, index) => {
       const previousPostId = index === 0 ? null : posts[index - 1].id
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
@@ -53,6 +66,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           id: post.id,
           previousPostId,
           nextPostId,
+        },
+      })
+    })
+
+    // Tags pages
+    tags.forEach(tag => {
+      createPage({
+        path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+        component: tagTemplate,
+        context: {
+          tag: tag.fieldValue,
         },
       })
     })
