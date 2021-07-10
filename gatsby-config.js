@@ -3,6 +3,7 @@ module.exports = {
     title: `Blog Starter`,
     seoTitle: `Blog Starter`,
     description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+    siteUrl: "https://github.com/tsaristbomba/gatsby-blog-starter",
     author: {
       name: "Lorem Ipsum Dolor",
       picture: "jumba.jpg", // image name from src/images
