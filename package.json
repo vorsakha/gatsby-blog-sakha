@@ -43,6 +43,7 @@
     "gatsby-transformer-remark": "^4.6.0",
     "gatsby-transformer-sharp": "^3.9.0",
     "netlify-cms-app": "^2.15.26",
+    "netlify-cms-locales": "^1.33.0",
     "postcss": "^8.3.5",
     "preact": "^10.5.14",
     "preact-render-to-string": "^5.1.19",
