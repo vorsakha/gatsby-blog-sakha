@@ -1,7 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 const _ = require("lodash")
-// const webpack = require(`webpack`)
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
@@ -108,13 +107,33 @@ exports.createSchemaCustomization = ({ actions }) => {
   // blog posts are stored inside "content/blog" instead of returning an error
   createTypes(`
     type SiteSiteMetadata {
-      author: String
-      siteUrl: String
-      social: Social
+      title: String
+      description: String
+      author: Author
+      colors: Colors
+      socials: Socials
     }
 
-    type Social {
+    type Author {
+      name: String
+      picture: String
+      alt: String
+    }
+
+    type Colors {
+      primary: String
+      secondary: String
+      tertiary: String
+      grayscale: Boolean
+    }
+
+    type Socials {
+      instagram: String
+      facebook: String
       twitter: String
+      linkedin: String
+      twitch: String
+      dev: String
     }
 
     type MarkdownRemark implements Node {
@@ -135,7 +154,7 @@ exports.createSchemaCustomization = ({ actions }) => {
   `)
 }
 
-//Not use netlify identity
+//Not use netlify identity//
 // exports.onCreateWebpackConfig = ({ actions }) => {
 //   actions.setWebpackConfig({
 //     plugins: [

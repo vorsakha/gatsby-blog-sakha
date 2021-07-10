@@ -6,11 +6,14 @@ import Seo from "../components/seo"
 
 // Utilities
 import kebabCase from "lodash/kebabCase"
+import getMetadata from "../functions/getMetadata"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
   const tags = data.allMarkdownRemark.group
+
+  const { primary, tertiary } = getMetadata().site.siteMetadata.colors
 
   if (posts.length === 0) {
     return (
@@ -35,8 +38,13 @@ const BlogIndex = ({ data, location }) => {
               <li className="pl-0 mb-2" key={tag.fieldValue}>
                 <div className="flex flex-row">
                   <Link
-                    className="p-4 px-4 pl-0 mr-1 font-thin text-bg hover:underline"
+                    className="p-4 px-4 pl-0 mr-1 font-thin hover:underline"
                     to={`/tags/${kebabCase(tag.fieldValue)}/`}
+                    style={{
+                      color: tertiary,
+                      padding: "1px 3px",
+                      backgroundColor: primary,
+                    }}
                   >
                     {tag.fieldValue}
                   </Link>
@@ -58,9 +66,14 @@ const BlogIndex = ({ data, location }) => {
                 <li key={post.fields.slug} className="pl-0 mb-2">
                   <div className="flex flex-row">
                     <Link
-                      className="p-4 px-4 pl-0 mr-1 font-thin text-bg hover:underline"
+                      className="p-4 px-4 pl-0 mr-1 font-thin hover:underline"
                       to={`/blog${post.fields.slug}`}
                       itemProp="url"
+                      style={{
+                        color: tertiary,
+                        padding: "1px 3px",
+                        backgroundColor: primary,
+                      }}
                     >
                       {title}
                     </Link>

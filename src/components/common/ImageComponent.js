@@ -3,6 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
 import useFilterImage from "../../functions/useFilterImage"
 import PropTypes from "prop-types"
+import getMetadata from "../../functions/getMetadata"
 
 const Img = styled(GatsbyImage)`
   width: 100% !important;
@@ -55,8 +56,9 @@ const Image = ({
   shadow,
   alt,
   forceheight,
-  grayscale,
+  // grayscale,
 }) => {
+  const { grayscale } = getMetadata().site.siteMetadata.colors
   return (
     <Img
       image={useFilterImage(image, grayscale)}
@@ -76,7 +78,6 @@ Image.propTypes = {
   hover: PropTypes.bool,
   shadow: PropTypes.bool,
   forceheight: PropTypes.bool,
-  grayscale: PropTypes.bool,
 }
 
 export default Image

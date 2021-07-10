@@ -8,11 +8,6 @@
     .span-2 {
       width: 63% !important;
     }
-    .text-bg {
-      background-color: #2d2d2d;
-      padding: 1px 3px;
-      color: #fff;
-    }
     .fix-height {
       min-height: 28px;
       max-height: 28px;

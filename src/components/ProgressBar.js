@@ -7,7 +7,7 @@ const BarContainer = styled.div`
   z-index: 10;
   background: transparent;
   width: 100%;
-  top: ${({ regular }) => (regular ? "0" : "70px")};
+  top: 0;
   left: 0;
   height: ${({ thick }) => (thick ? "6px" : "3px")};
 `
@@ -25,7 +25,7 @@ const Bar = styled.div`
   height: ${({ thick }) => (thick ? "6px" : "3px")};
 `
 
-const ProgressBar = ({ thick, regular, colors }) => {
+const ProgressBar = ({ thick, colors }) => {
   const [scroll, setScroll] = React.useState(0)
 
   function handleProgress() {
@@ -45,7 +45,7 @@ const ProgressBar = ({ thick, regular, colors }) => {
   })
 
   return (
-    <BarContainer regular={regular} thick={thick}>
+    <BarContainer thick={thick}>
       <Bar
         thick={thick}
         style={{ transform: `scale(${scroll}, 1)` }}

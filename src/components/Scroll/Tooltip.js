@@ -10,9 +10,9 @@ const TooltipWrapper = styled.div`
     position: fixed;
     /* bottom: 7vh; */
     opacity: 1;
-    right: ${({ small }) => (small ? "13vh" : "13.8vh")};
-    background: #333;
-    color: #fff;
+    right: 13.8vh;
+    background: ${({ colors }) => colors.primary};
+    color: ${({ colors }) => colors.tertiary};
     padding: 0 10px;
     display: inline-flex;
     max-width: 150px;
@@ -30,50 +30,15 @@ const TooltipWrapper = styled.div`
       margin-top: -5px;
       border-width: 5px;
       border-style: solid;
-      border-color: transparent transparent transparent #333;
+      border-color: transparent transparent transparent
+        ${({ colors }) => colors.primary};
     }
-
-    /* At the bottom of the tooltip */
-    /* ::after {
-      content: " ";
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: black transparent transparent transparent;
-    } */
-
-    /* At the top of the tooltip */
-    /* ::after {
-      content: " ";
-      position: absolute;
-      bottom: 100%; 
-      left: 50%;
-      margin-left: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: transparent transparent black transparent;
-    } */
-
-    /* To the left of the tooltip */
-    /* ::after {
-      content: " ";
-      position: absolute;
-      top: 50%;
-      right: 100%;
-      margin-top: -5px;
-      border-width: 5px;
-      border-style: solid;
-      border-color: transparent black transparent transparent;
-    } */
   }
 `
 
-const Tooltip = ({ children, rounded, small }) => {
+const Tooltip = ({ children, rounded, colors }) => {
   return (
-    <TooltipWrapper small={small} rounded={rounded}>
+    <TooltipWrapper colors={colors} rounded={rounded}>
       {children}
     </TooltipWrapper>
   )
@@ -81,6 +46,8 @@ const Tooltip = ({ children, rounded, small }) => {
 
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
+  colors: PropTypes.object,
+  rounded: PropTypes.bool,
 }
 
 export default Tooltip

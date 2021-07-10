@@ -3,7 +3,12 @@ import ImageComponent from "../components/common/ImageComponent"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+// Utils
+import getMetadata from "../functions/getMetadata"
+
 const BlogIndex = () => {
+  const { picture, alt } = getMetadata().site.siteMetadata.author
+
   return (
     <Layout>
       <Seo title="About" />
@@ -25,13 +30,7 @@ const BlogIndex = () => {
           </p>
         </div>
         <div>
-          <ImageComponent
-            image="jumba.jpg" // name of image on src/images
-            alt="Dande"
-            rounded
-            shadow
-            grayscale
-          />
+          <ImageComponent image={picture} alt={alt} rounded shadow grayscale />
         </div>
       </div>
     </Layout>

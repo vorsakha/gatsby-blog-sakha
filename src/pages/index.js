@@ -7,10 +7,12 @@ import filterImageString from "../functions/filterImageString"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
 
-// BUG FETCHING IMAGES
+// Utils
+import getMetadata from "../functions/getMetadata"
 
 const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes
+  const { primary, secondary } = getMetadata().site.siteMetadata.colors
 
   if (posts.length === 0) {
     return (
@@ -53,8 +55,9 @@ const BlogIndex = ({ data }) => {
                     <header>
                       <h2 className="font-thin">
                         <Link
-                          className="text-xl text-gray-500 font-semibold cursor-pointer hover:text-gray-900 hover:underline transition-colors ease-in-out"
+                          className="text-xl font-semibold cursor-pointer hover:underline transition-colors ease-in-out"
                           to={`/blog${post.fields.slug}`}
+                          style={{ color: secondary }}
                           itemProp="url"
                         >
                           <ImageComponent
@@ -68,18 +71,20 @@ const BlogIndex = ({ data }) => {
                           <span
                             className="mt-2 font-encode font-light text-xl hover:underline"
                             itemProp="headline"
+                            style={{ color: primary }}
                           >
                             {title}
                           </span>
                         </Link>
                       </h2>
-                      <small className="text-gray-400 text-xs">
+                      <small className="text-xs" style={{ color: secondary }}>
                         {post.frontmatter.date} &bull; {post.timeToRead} min.
                       </small>
                     </header>
                     <section>
                       <p
-                        className="font-light text-gray-500"
+                        className="font-light"
+                        style={{ color: secondary }}
                         dangerouslySetInnerHTML={{
                           __html: post.frontmatter.description || post.excerpt,
                         }}

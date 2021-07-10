@@ -4,6 +4,9 @@ import handleHexToRgba from "../../functions/handleHexToRgba"
 import useFilterImage from "../../functions/useFilterImage"
 import PropTypes from "prop-types"
 
+// Utils
+import getMetadata from "../../functions/getMetadata"
+
 const GradientHero = styled.div`
   margin-top: 0;
   height: 100%;
@@ -40,12 +43,15 @@ const Overlay = styled.div`
   }
 `
 
-const HeroImageBg = ({ children, attach, image, rounded, grayscale }) => {
+const HeroImageBg = ({ children, attach, image, rounded }) => {
+  const { grayscale, primary, secondary } =
+    getMetadata().site.siteMetadata.colors
+
   const toBottomStack = [
     `linear-gradient(
       to bottom,
-      ${handleHexToRgba("#333", 0.7)},
-      ${handleHexToRgba("#6B7280", 0.3)})`,
+      ${handleHexToRgba(primary, 0.7)},
+      ${handleHexToRgba(secondary, 0.3)})`,
   ]
 
   const filteredImg = useFilterImage(image, grayscale)
@@ -70,7 +76,6 @@ HeroImageBg.propTypes = {
   attach: PropTypes.bool,
   image: PropTypes.string,
   rounded: PropTypes.bool,
-  grayscale: PropTypes.bool,
 }
 
 export default HeroImageBg

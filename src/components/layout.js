@@ -1,16 +1,26 @@
 import React from "react"
 import { Link } from "gatsby"
-import { AiFillInstagram as InstagramIcon } from "@react-icons/all-files/ai/AiFillInstagram"
-import { FaFacebookSquare as FacebookIcon } from "@react-icons/all-files/fa/FaFacebookSquare"
 import ScrollButton from "./Scroll/Scroll"
 import ProgressBar from "./ProgressBar"
+
+// Utils
+import getMetadata from "../functions/getMetadata"
+import getSocials from "../functions/getSocials"
 
 const Layout = props => {
   const year = new Date().getFullYear()
 
+  const { title, description, author } = getMetadata().site.siteMetadata
+
   // Progress bar
-  const colors = { primary: "#6B7280", primaryDark: "#333" }
+  const { primary, secondary } = getMetadata().site.siteMetadata.colors
+  const colors = { primary: secondary, primaryDark: primary }
   //
+
+  const { socials } = getMetadata().site.siteMetadata
+
+  // Get socials
+  const socialsJsx = getSocials(socials)
 
   return (
     <div
@@ -20,40 +30,50 @@ const Layout = props => {
       <nav className="flex flex-col m-auto w-full py-4 mt-8 mb-4">
         <div className="p-4 px-4 pl-0">
           <Link
-            className="font-encode text-gray-900 flex flex-row w-full items-center text-3xl md:text-6xl font-bold"
+            className="font-encode flex flex-row w-full items-center text-3xl md:text-6xl font-bold"
             to="/"
+            style={{ color: primary }}
           >
-            Lorem, ipsum dolor.
+            {title}
           </Link>
-          <p className="text-gray-400 font-thin text-md md:text-xl">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          <p
+            className="font-thin text-md md:text-xl"
+            style={{ color: secondary }}
+          >
+            {description}
           </p>
         </div>
 
         <ul className="flex flex-row ml-auto items-center fix-height">
           <li>
             <Link
-              className="font-encode font-light text-gray-400 p-4 px-4 hover:text-gray-900 text-md transition-colors ease-in-out"
+              className="font-encode font-light p-4 px-4 text-md transition-colors ease-in-out hover:underline"
               to="/"
-              activeClassName="text-gray-900"
+              activeClassName="underline"
+              style={{ color: secondary }}
+              activeStyle={{ color: primary }}
             >
               HOME
             </Link>
           </li>
           <li>
             <Link
-              className="font-encode font-light text-gray-400 p-4 px-4 hover:text-gray-900 text-md transition-colors ease-in-out"
+              className="font-encode font-light p-4 px-4 text-md transition-colors ease-in-out hover:underline"
               to="/archive"
-              activeClassName="text-gray-900"
+              activeClassName="underline"
+              style={{ color: secondary }}
+              activeStyle={{ color: primary }}
             >
               ARCHIVE
             </Link>
           </li>
           <li>
             <Link
-              className="font-encode font-light text-gray-400 p-4 px-4 pr-0 hover:text-gray-900 text-md transition-colors ease-in-out"
+              className="font-encode font-light p-4 px-4 pr-0 text-md transition-colors ease-in-out hover:underline"
               to="/about"
-              activeClassName="text-gray-900"
+              activeClassName="underline"
+              style={{ color: secondary }}
+              activeStyle={{ color: primary }}
             >
               ABOUT
             </Link>
@@ -65,33 +85,25 @@ const Layout = props => {
           data={{
             message: "To the top",
           }}
-          rounded="true"
+          rounded
         />
       )}
-      {props.progress && <ProgressBar regular colors={colors} />}
+      {props.progress && <ProgressBar colors={colors} />}
       <div
         style={{ minHeight: "calc(100vh - 180px - 57px - 32px - 16px - 24px)" }}
       >
         {props.children}
       </div>
 
-      <footer className="flex flex-row items-center justify-between m-auto border-t border-gray-300">
+      <footer
+        className="flex flex-row items-center justify-between m-auto border-t border-gray-300"
+        style={{ color: primary }}
+      >
         <div className="flex flex-row">
-          <Link
-            className="text-gray-400 p-4 px-4 pl-0 text-2xl font-bold hover:text-gray-900"
-            to="/"
-          >
-            <InstagramIcon />
-          </Link>
-          <Link
-            className="text-gray-400 p-4 px-4 pl-0 text-xl mt-0.5 font-bold hover:text-gray-900"
-            to="/"
-          >
-            <FacebookIcon />
-          </Link>
+          {socialsJsx !== undefined && socialsJsx.map(item => item)}
         </div>
-        <p className="text-gray-500 text-xs">
-          &copy;{year} Brand. All rights reserved.
+        <p className="text-xs" style={{ color: secondary }}>
+          &copy;{year} {author.name}. All rights reserved.
         </p>
       </footer>
     </div>

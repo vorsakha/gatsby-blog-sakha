@@ -1,6 +1,7 @@
 import * as React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
+import getMetadata from "../functions/getMetadata"
 
 const Main = styled.main`
   display: flex;
@@ -11,15 +12,19 @@ const Main = styled.main`
 
   a {
     text-decoration: none;
-    color: #fff;
+    color: ${({ colors }) => colors.tertiary};
     font-weight: 300;
-    background-color: #2d2d2d;
+    background-color: ${({ colors }) => colors.primary};
     padding: 0 3px;
     transition: all 0.2s ease-in-out;
 
     :hover {
       text-decoration: underline;
     }
+  }
+
+  small {
+    color: ${({ colors }) => colors.secondary};
   }
 
   header {
@@ -39,7 +44,7 @@ const Main = styled.main`
   table,
   td,
   th {
-    border: 1px solid #333;
+    border: 1px solid ${({ colors }) => colors.primary};
   }
 
   td,
@@ -81,7 +86,7 @@ const Main = styled.main`
       shadow
         ? "rgb(17 17 26 / 10%) 0px 1px 0px, rgb(17 17 26 / 10%) 0px 8px 12px, rgb(17 17 26 / 1%) 0px 16px 28px !important"
         : "none"};
-    filter: grayscale(100%);
+    filter: ${({ grayscale }) => (grayscale ? "grayscale(100%)" : "none")};
   }
 
   pre,
@@ -90,7 +95,7 @@ const Main = styled.main`
   }
 
   pre {
-    background-color: #d8d6d6;
+    background-color: ${({ colors }) => colors.secondary};
     font-size: 0.8rem;
     overflow: auto;
     padding: 1.125em;
@@ -99,7 +104,7 @@ const Main = styled.main`
 
   pre,
   blockquote {
-    background-color: #d8d6d6;
+    background-color: ${({ colors }) => colors.secondary};
     page-break-inside: avoid;
     border-radius: 4px;
     padding: 10px;
@@ -122,7 +127,18 @@ const Main = styled.main`
 `
 
 const BlogLayout = ({ children, shadow }) => {
-  return <Main shadow={shadow}>{children}</Main>
+  const { primary, secondary, tertiary, grayscale } =
+    getMetadata().site.siteMetadata.colors
+
+  return (
+    <Main
+      colors={{ primary, secondary, tertiary }}
+      grayscale={grayscale}
+      shadow={shadow}
+    >
+      {children}
+    </Main>
+  )
 }
 
 BlogLayout.propTypes = {

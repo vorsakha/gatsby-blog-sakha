@@ -3,6 +3,9 @@ import styled from "styled-components"
 import PropTypes from "prop-types"
 import BgHeroBlog from "./common/BgHeroBlog"
 
+// Utils
+import getMetadata from "../functions/getMetadata"
+
 const BgItems = styled.div`
   display: flex;
   flex-direction: column;
@@ -46,7 +49,9 @@ const BgItemsChildren = styled.div`
   }
 `
 
-const Hero = ({ rounded, data, attach, grayscale, thin }) => {
+const Hero = ({ rounded, data, attach, thin }) => {
+  const { grayscale } = getMetadata().site.siteMetadata.colors
+
   return (
     <>
       <BgHeroBlog
@@ -69,7 +74,6 @@ Hero.propTypes = {
   rounded: PropTypes.bool,
   data: PropTypes.object,
   attach: PropTypes.bool,
-  grayscale: PropTypes.bool,
   thin: PropTypes.bool,
 }
 

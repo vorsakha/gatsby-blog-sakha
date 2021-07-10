@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import BlogHero from "../components/BlogHero"
 
-// Utilities
+// Utils
 import kebabCase from "lodash/kebabCase"
 
 const BlogPostTemplate = ({ data }) => {
@@ -48,7 +48,7 @@ const BlogPostTemplate = ({ data }) => {
         <article>
           <header>
             <h1 itemProp="headline">{post.frontmatter.title}</h1>
-            <small className="text-gray-500 text-xs">
+            <small className="text-xs">
               {post.frontmatter.date} &bull; {post.timeToRead}{" "}
               {post.timeToRead === 1 ? " minute " : " minutes "}read. &bull;
               tags:

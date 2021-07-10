@@ -2,9 +2,27 @@ module.exports = {
   siteMetadata: {
     title: `Blog Starter`,
     seoTitle: `Blog Starter`,
-    description: `Blog Starter`,
-    author: `@tsaristbomba`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
+    author: {
+      name: "Lorem Ipsum Dolor",
+      picture: "jumba.jpg", // image name from src/images
+      alt: "Author picture",
+    },
+    socials: {
+      // Social links
+      instagram: "https://www.instagram.com",
+      facebook: "https://www.facebook.com",
+      twitter: "",
+      linkedin: "",
+      twitch: "",
+      dev: "",
+    },
+    colors: {
+      primary: "#280137",
+      secondary: "#9ca3af",
+      tertiary: "#fff",
+      grayscale: false, // grayscale for images
+    },
   },
   flags: {
     PARALLEL_SOURCING: true,
@@ -73,12 +91,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: `ADD YOUR TRACKING ID HERE`,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-feed`,
       options: {
@@ -137,8 +149,8 @@ module.exports = {
         name: `Gatsby Starter Blog`,
         short_name: `GatsbyJS`,
         start_url: `/`,
-        background_color: `#6b7280`,
-        theme_color: `#333`,
+        background_color: `#fff`,
+        theme_color: `#280137`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
         lang: `pt-br`,

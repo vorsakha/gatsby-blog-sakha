@@ -5,6 +5,9 @@ import Tooltip from "./Tooltip"
 import handleHexToRgba from "../../functions/handleHexToRgba"
 import PropTypes from "prop-types"
 
+// Utils
+import getMetadata from "../../functions/getMetadata"
+
 const Button = styled.button`
   display: ${({ scrolled }) => (scrolled ? "flex" : "none")};
   z-index: 12;
@@ -14,12 +17,13 @@ const Button = styled.button`
   height: 30px;
   width: 30px;
   cursor: pointer;
-  background: #333;
+  background: ${({ colors }) => colors.primary};
   border: none;
   border-radius: ${({ rounded }) => (rounded ? "50%" : "none")};
   align-items: center;
   justify-content: center;
-  box-shadow: 1px 1px 3px 3px ${props => handleHexToRgba("#333", 0.2)};
+  box-shadow: 1px 1px 3px 3px
+    ${props => handleHexToRgba(props.colors.primary, 0.2)};
   transition: background 0.2s ease;
 
   // Transition group
@@ -44,11 +48,12 @@ const Button = styled.button`
   //
 
   svg {
-    color: #fff;
+    color: ${({ colors }) => colors.tertiary};
   }
 
   :hover {
-    background: #6b7280;
+    background: ${({ colors }) => colors.secondary};
+    color: ${({ colors }) => colors.primary};
   }
 
   @media screen and (min-width: 768px) {
@@ -59,12 +64,15 @@ const Button = styled.button`
 `
 const Arrow = styled(BsArrowUp)`
   font-size: 1.5rem;
-  color: #fff;
+  color: ${({ colors }) => colors.tertiary};
 `
 
 const ScrollButton = ({ rounded, data, msg }) => {
   const [scrolled, setScrolled] = useState(false)
   const [tooltip, setTooltip] = React.useState(true)
+
+  const { primary, secondary, tertiary } =
+    getMetadata().site.siteMetadata.colors
 
   function scrollToTop() {
     window.scrollTo(0, 0)
@@ -108,10 +116,15 @@ const ScrollButton = ({ rounded, data, msg }) => {
       scrolled={scrolled}
       onClick={scrollToTop}
       aria-label={data.message}
+      colors={{ primary, tertiary, secondary }}
     >
-      <Arrow />
+      <Arrow colors={{ tertiary }} />
       {tooltip && (
-        <Tooltip small rounded={rounded}>
+        <Tooltip
+          colors={{ primary, tertiary, secondary }}
+          small
+          rounded={rounded}
+        >
           {data.message}
         </Tooltip>
       )}
@@ -121,6 +134,7 @@ const ScrollButton = ({ rounded, data, msg }) => {
 
 ScrollButton.propTypes = {
   data: PropTypes.object.isRequired,
+  rounded: PropTypes.bool,
 }
 
 export default ScrollButton
