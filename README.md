@@ -5,7 +5,7 @@
     Sakha Blog Starter
 </h1>
 
-## Technology Stack
+## ✅Technology Stack
 
 - [GatsbyJs](http://gatsbyjs.com).
 - [Tailwind css](http://tailwindcss.com).
@@ -14,7 +14,7 @@
 - [Netlify CMS Locales](https://www.npmjs.com/package/netlify-cms-locales).
 - [gatsby-plugin-image](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/).
 
-## Features
+## ✅Features
 
 - [PWA](https://web.dev/progressive-web-apps/) support.
 - [Mobile-First](https://medium.com/@mrmrs_/mobile-first-css-48bc4cc3f60f) approach in development.
@@ -23,7 +23,7 @@
 - Pagination support.
 - Blazing fast!
 
-## Quick edit
+## ✅Quick edit
 
 You can edit basic information by:
 
@@ -35,9 +35,9 @@ You can edit basic information by:
 - Socials - You can edit by changing gatsby-config.js metadata. If social option is "", it won't show anything, if has any text, will start to show at footer using that text as href link.
 - Color Scheme - You can edit by changing gatsby-config.js.
 
-## Quick Start
+## ✅Quick Start
 
-#### Create a Gatsby site
+#### ✔️Create a Gatsby site
 
 Create a new site with Gatsby CLI, specifying the Sakha starter.
 
@@ -45,7 +45,7 @@ Create a new site with Gatsby CLI, specifying the Sakha starter.
 gatsby new my-blog https://github.com/tsaristbomba/gatsby-blog-sakha
 ```
 
-#### Start Developing
+#### ✔️Start Developing
 
 Navigate into your new site’s directory and start the gatsby develop script.
 
@@ -54,7 +54,7 @@ cd blog
 gatsby develop
 ```
 
-#### Open the source code and start editing!
+#### ✔️Open the source code and start editing!
 
 Your site is now running at `http://localhost:8000`!
 
@@ -62,13 +62,13 @@ Query your data at: `http://localhost:8000/___graphql`.
 
 Learn more about how to query Gatsby data at - [Gatsby Tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql).
 
-## Deploy with Netlify
+## ✅Deploy with Netlify
 
 Try on [Netlify](https://netlify.com)'s quick deploy:
 
 <a href="https://app.netlify.com/start/deploy?repository=https://github.com/tsaristbomba/gatsby-blog-sakha" target="_blank"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
 
-#### NetlifyCMS Locally
+#### ✔️NetlifyCMS Locally
 
 To test the CMS locally, you'll need run a production build of the site:
 
@@ -77,7 +77,7 @@ $ yarn build
 $ gatsby serve
 ```
 
-## Folder Structure
+## ✅Folder Structure
 
 ```
 └── content
