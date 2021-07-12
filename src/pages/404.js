@@ -1,7 +1,9 @@
 import React from "react"
+import { RiBugLine as ErrorIcon } from "@react-icons/all-files/ri/RiBugLine"
+
+// Components
 import Seo from "../components/seo"
 import Layout from "../components/layout"
-import { RiBugLine as ErrorIcon } from "@react-icons/all-files/ri/RiBugLine"
 
 const ErrorPage = () => {
   return (

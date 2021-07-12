@@ -1,11 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
+
+// Components
 import BgHeroBlog from "./common/BgHeroBlog"
 
 // Utils
-import getMetadata from "../functions/getMetadata"
+import getMetadata from "../utils/getMetadata"
 
+// Styled components
 const BgItems = styled.div`
   display: flex;
   flex-direction: column;

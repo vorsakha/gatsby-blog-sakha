@@ -1,4 +1,6 @@
 import * as React from "react"
+
+// Components
 import ImageComponent from "../components/common/ImageComponent"
 import Layout from "../components/layout"
 import Seo from "../components/seo"

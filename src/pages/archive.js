@@ -1,6 +1,8 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { RiZzzFill as SleepIcon } from "@react-icons/all-files/ri/RiZzzFill"
+
+// Components
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 

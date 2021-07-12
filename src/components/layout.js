@@ -1,11 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
+
+// Components
 import ScrollButton from "./Scroll/Scroll"
 import ProgressBar from "./ProgressBar"
 
 // Utils
-import getMetadata from "../functions/getMetadata"
-import getSocials from "../functions/getSocials"
+import getMetadata from "../utils/getMetadata"
+import getSocials from "../utils/getSocials"
 
 const Layout = props => {
   const year = new Date().getFullYear()

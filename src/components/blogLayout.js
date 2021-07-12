@@ -1,8 +1,11 @@
 import * as React from "react"
 import styled from "styled-components"
 import PropTypes from "prop-types"
-import getMetadata from "../functions/getMetadata"
 
+// Utils
+import getMetadata from "../utils/getMetadata"
+
+// Styled components
 const Main = styled.main`
   display: flex;
   flex-direction: column;

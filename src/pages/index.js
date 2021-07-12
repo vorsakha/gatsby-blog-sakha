@@ -2,6 +2,8 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import Masonry from "react-masonry-css"
 import { RiZzzFill as SleepIcon } from "@react-icons/all-files/ri/RiZzzFill"
+
+// Components
 import ImageComponent from "../components/common/ImageComponent"
 import filterImageString from "../functions/filterImageString"
 import Seo from "../components/seo"
@@ -9,8 +11,6 @@ import Layout from "../components/layout"
 
 // Utils
 import getMetadata from "../functions/getMetadata"
-
-// LCP (maybe placeholder image's fault)
 
 const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes

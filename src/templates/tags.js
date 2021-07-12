@@ -6,8 +6,8 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
-// Utilities
-import getMetadata from "../functions/getMetadata"
+// Utils
+import getMetadata from "../utils/getMetadata"
 
 const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext

@@ -1,9 +1,11 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import useFilterImage from "../../functions/useFilterImage"
 import PropTypes from "prop-types"
-import getMetadata from "../../functions/getMetadata"
+
+// Utils
+import getMetadata from "../../utils/getMetadata"
+import useFilterImage from "../../utils/useFilterImage"
 
 const Img = styled(GatsbyImage)`
   width: 100% !important;

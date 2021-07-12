@@ -1,12 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import handleHexToRgba from "../../functions/handleHexToRgba"
-import useFilterImage from "../../functions/useFilterImage"
 import PropTypes from "prop-types"
 
 // Utils
-import getMetadata from "../../functions/getMetadata"
+import getMetadata from "../../utils/getMetadata"
+import handleHexToRgba from "../../utils/handleHexToRgba"
+import useFilterImage from "../../utils/useFilterImage"
 
+// Styled components
 const GradientHero = styled.div`
   margin-top: 0;
   height: 100%;

@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { BsArrowUp } from "@react-icons/all-files/bs/BsArrowUp"
-import Tooltip from "./Tooltip"
-import handleHexToRgba from "../../functions/handleHexToRgba"
 import PropTypes from "prop-types"
 
-// Utils
-import getMetadata from "../../functions/getMetadata"
+// Components
+import Tooltip from "./Tooltip"
 
+// Utils
+import getMetadata from "../../utils/getMetadata"
+import handleHexToRgba from "../../utils/handleHexToRgba"
+
+// Styled components
 const Button = styled.button`
   display: ${({ scrolled }) => (scrolled ? "flex" : "none")};
   z-index: 12;
