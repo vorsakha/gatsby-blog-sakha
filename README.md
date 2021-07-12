@@ -1,4 +1,5 @@
 <h1 align="center">
+<img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
     Sakha Blog Starter
 </h1>
 
