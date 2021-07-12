@@ -24,7 +24,7 @@ const getSocials = object => {
       case "instagram":
         jsx.unshift(
           <a
-            className="p-4 px-4 pl-0 text-2xl font-bold hover:underline"
+            className="p-4 px-4 pl-0 text-2xl font-bold hover:opacity-90"
             href={item[1]}
             target="__blank"
             name="Instagram"
@@ -36,7 +36,7 @@ const getSocials = object => {
       case "facebook":
         jsx.unshift(
           <a
-            className="p-4 px-4 pl-0 text-xl font-bold hover:underline"
+            className="p-4 px-4 pl-0 text-xl font-bold hover:opacity-90"
             href={item[1]}
             target="__blank"
             name="Facebook"
@@ -48,7 +48,7 @@ const getSocials = object => {
       case "twitter":
         jsx.unshift(
           <a
-            className="p-4 px-4 pl-0 text-xl font-bold hover:underline"
+            className="p-4 px-4 pl-0 text-xl font-bold hover:opacity-90"
             href={item[1]}
             target="__blank"
             name="Twitter"
@@ -60,7 +60,7 @@ const getSocials = object => {
       case "linkedin":
         jsx.unshift(
           <a
-            className="p-4 px-4 pl-0 text-xl font-bold hover:underline"
+            className="p-4 px-4 pl-0 text-xl font-bold hover:opacity-90"
             href={item[1]}
             target="__blank"
             name="LinkedIn"
@@ -72,7 +72,7 @@ const getSocials = object => {
       case "twitch":
         jsx.unshift(
           <a
-            className="p-4 px-4 pl-0 text-xl font-bold hover:underline"
+            className="p-4 px-4 pl-0 text-xl font-bold hover:opacity-90"
             href={item[1]}
             target="__blank"
             name="Twitch"
@@ -84,7 +84,7 @@ const getSocials = object => {
       case "dev":
         jsx.unshift(
           <a
-            className="p-4 px-4 pl-0 text-2xl font-bold hover:underline"
+            className="p-4 px-4 pl-0 text-2xl font-bold hover:opacity-90"
             href={item[1]}
             target="__blank"
             name="Dev.to"
