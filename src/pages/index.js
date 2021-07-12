@@ -16,6 +16,16 @@ const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes
   const { primary, secondary } = getMetadata().site.siteMetadata.colors
 
+  // Pagination
+  const [items, setItems] = React.useState(5)
+  const getMoreItems = () => {
+    setItems(items + 6)
+  }
+  const getLessItems = () => {
+    setItems(5)
+  }
+
+  // No blog posts
   if (posts.length === 0) {
     return (
       <Layout>
@@ -28,6 +38,7 @@ const BlogIndex = ({ data }) => {
     )
   }
 
+  // Masonry options
   const masonryBreakpoints = {
     default: 3,
     768: 2,
@@ -43,60 +54,86 @@ const BlogIndex = ({ data }) => {
           className="my-masonry-grid"
           columnClassName="my-masonry-grid_column"
         >
-          {posts.map(post => {
+          {posts.map((post, key) => {
             const title = post.frontmatter.title || post.fields.slug
 
-            return (
-              <div key={post.fields.slug} className={`mb-6`}>
-                <article
-                  className="post-list-item"
-                  itemScope
-                  itemType="http://schema.org/Article"
-                >
-                  <header>
-                    <h2 className="font-thin">
-                      <Link
-                        className="text-xl font-semibold cursor-pointer hover:underline transition-colors ease-in-out"
-                        to={`/blog${post.fields.slug}`}
-                        style={{ color: secondary }}
-                        itemProp="url"
-                      >
-                        <ImageComponent
-                          image={filterImageString(post.frontmatter.image)}
-                          rounded
-                          grayscale
-                          shadow
-                          hover
-                          alt={title}
-                        />
-                        <span
-                          className="mt-2 font-encode font-light text-xl hover:underline"
-                          itemProp="headline"
-                          style={{ color: primary }}
+            if (key <= items) {
+              return (
+                <div key={post.fields.slug} className={`mb-6`}>
+                  <article
+                    className="post-list-item"
+                    itemScope
+                    itemType="http://schema.org/Article"
+                  >
+                    <header>
+                      <h2 className="font-thin">
+                        <Link
+                          className="text-xl font-semibold cursor-pointer hover:underline transition-colors ease-in-out"
+                          to={`/blog${post.fields.slug}`}
+                          style={{ color: secondary }}
+                          itemProp="url"
                         >
-                          {title}
-                        </span>
-                      </Link>
-                    </h2>
-                    <small className="text-xs" style={{ color: secondary }}>
-                      {post.frontmatter.date} &bull; {post.timeToRead} min.
-                    </small>
-                  </header>
-                  <section>
-                    <p
-                      className="font-light"
-                      style={{ color: secondary }}
-                      dangerouslySetInnerHTML={{
-                        __html: post.frontmatter.description || post.excerpt,
-                      }}
-                      itemProp="description"
-                    />
-                  </section>
-                </article>
-              </div>
-            )
+                          <ImageComponent
+                            image={filterImageString(post.frontmatter.image)}
+                            rounded
+                            grayscale
+                            shadow
+                            hover
+                            alt={title}
+                          />
+                          <span
+                            className="mt-2 font-encode font-light text-xl hover:underline"
+                            itemProp="headline"
+                            style={{ color: primary }}
+                          >
+                            {title}
+                          </span>
+                        </Link>
+                      </h2>
+                      <small className="text-xs" style={{ color: secondary }}>
+                        {post.frontmatter.date} &bull; {post.timeToRead} min.
+                      </small>
+                    </header>
+                    <section>
+                      <p
+                        className="font-light"
+                        style={{ color: secondary }}
+                        dangerouslySetInnerHTML={{
+                          __html: post.frontmatter.description || post.excerpt,
+                        }}
+                        itemProp="description"
+                      />
+                    </section>
+                  </article>
+                </div>
+              )
+            } else {
+              return ""
+            }
           })}
         </Masonry>
+      </div>
+      <div className="flex justify-center">
+        {posts.length > items ? (
+          <button
+            className="hover:underline font-encode font-light"
+            onClick={() => getMoreItems()}
+          >
+            SHOW MORE
+          </button>
+        ) : (
+          ""
+        )}
+        {items > 5 ? (
+          <button
+            className="hover:underline ml-4 font-encode font-light"
+            onClick={() => getLessItems()}
+          >
+            SHOW LESS
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </Layout>
   )

@@ -11,13 +11,27 @@
 - [Netlify CMS](https://www.netlifycms.org).
 - [Netlify CMS Locales](https://www.npmjs.com/package/netlify-cms-locales).
 - [gatsby-plugin-image](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/).
-<!-- - [PWA](https://web.dev/progressive-web-apps/) support. -->
 
-<!-- ## Features
-+ [Mobile-First](https://medium.com/@mrmrs_/mobile-first-css-48bc4cc3f60f) approach in development.
-+ Archive and tags.
-+ Google Analytics.
-+ Pagination support.(Coming soon) -->
+## Features
+
+- [PWA](https://web.dev/progressive-web-apps/) support.
+- [Mobile-First](https://medium.com/@mrmrs_/mobile-first-css-48bc4cc3f60f) approach in development.
+- Archive and tags.
+<!-- + Google Analytics. -->
+- Pagination support.
+- Blazing fast!
+
+## Quick edit
+
+You can edit basic information by:
+
+- Default image - You can change it by replacing default.jpg at src/images - it applies when the blog post has no image provided.
+- Navigation Title - You can edit by changing gatsby-config.js metadata title.
+- Author
+  - Author name - You can edit by changing gatsby-config.js metadata.
+  - Author picture - You can change it by replacing author.jpg at src/images.
+- Socials - You can edit by changing gatsby-config.js metadata. If social option is "", it won't show anything, if has any text, will start to show at footer using that text as href link.
+- Color Scheme - You can edit by changing gatsby-config.js.
 
 ## Quick Start
 

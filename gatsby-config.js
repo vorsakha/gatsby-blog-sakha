@@ -6,7 +6,7 @@ module.exports = {
     siteUrl: "https://github.com/tsaristbomba/gatsby-blog-starter",
     author: {
       name: "Lorem Ipsum Dolor",
-      picture: "jumba.jpg", // image name from src/images
+      picture: "author.jpg", // image name from src/images
       alt: "Author picture",
     },
     socials: {
@@ -19,10 +19,10 @@ module.exports = {
       dev: "",
     },
     colors: {
-      primary: "#280137",
+      primary: "#663399",
       secondary: "#9ca3af",
       tertiary: "#fff",
-      grayscale: false, // grayscale for images
+      grayscale: false, // grayscale for all images
     },
   },
   flags: {
@@ -144,20 +144,19 @@ module.exports = {
         ],
       },
     },
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `SakhaBlog`,
+        short_name: `Sakha`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#280137`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-        lang: `en-us`,
       },
     },
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-offline`,
   ],
 }
