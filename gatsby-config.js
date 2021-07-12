@@ -3,7 +3,7 @@ module.exports = {
     title: `Blog Starter`,
     seoTitle: `Blog Starter`,
     description: `Lorem ipsum dolor sit, amet consectetur adipisicing elit.`,
-    siteUrl: "https://github.com/tsaristbomba/gatsby-blog-starter",
+    siteUrl: "https://sakha-blog.netlify.app/",
     author: {
       name: "Lorem Ipsum Dolor",
       picture: "author.jpg", // image name from src/images
