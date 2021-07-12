@@ -12,7 +12,7 @@ const BlogIndex = () => {
   const { picture, alt } = getMetadata().site.siteMetadata.author
 
   return (
-    <Layout>
+    <Layout scroll>
       <Seo title="About" />
       <div className="grid md:grid-cols-3 gap-6 mt-2 mb-4 items-center">
         <div className="md:col-span-2">

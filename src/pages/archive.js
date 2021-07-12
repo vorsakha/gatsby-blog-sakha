@@ -30,7 +30,7 @@ const BlogIndex = ({ data, location }) => {
   }
 
   return (
-    <Layout transparent light sticky rounded="true">
+    <Layout scroll>
       <Seo title="Archive" />
       <div className="grid md:grid-cols-2 pb-4">
         <div>

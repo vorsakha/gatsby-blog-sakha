@@ -46,7 +46,7 @@ const BlogIndex = ({ data }) => {
   }
 
   return (
-    <Layout>
+    <Layout scroll>
       <Seo title="Home" />
       <div>
         <Masonry
@@ -113,11 +113,12 @@ const BlogIndex = ({ data }) => {
           })}
         </Masonry>
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-4">
         {posts.length > items ? (
           <button
             className="hover:underline font-encode font-light"
             onClick={() => getMoreItems()}
+            style={{ color: primary }}
           >
             SHOW MORE
           </button>
@@ -128,6 +129,7 @@ const BlogIndex = ({ data }) => {
           <button
             className="hover:underline ml-4 font-encode font-light"
             onClick={() => getLessItems()}
+            style={{ color: primary }}
           >
             SHOW LESS
           </button>
