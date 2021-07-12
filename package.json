@@ -1,11 +1,21 @@
 {
   "name": "blog-starter",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "A minimal design starter for a blog powered by Gatsby and Markdown",
   "version": "0.1.0",
   "author": "@tsaristbomba",
   "keywords": [
-    "gatsby"
+      "gatsby",
+    "graphql",
+    "netlify",
+    "netlify-cms",
+    "tags",
+    "static",
+    "blog",
+    "minimal",
+    "react",
+    "theme",
+    "starter"
   ],
   "license": "MIT",
   "scripts": {
