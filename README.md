@@ -4,13 +4,13 @@
 
 ## Technology Stack
 
-- [GatsbyJs](http://prismjs.com).
-- [Tailwind css](http://lostgrid.org).
-- [Styled components](https://bitsofco.de/the-new-system-font-stack).
+- [GatsbyJs](http://gatsbyjs.com).
+- [Tailwind css](http://tailwindcss.com).
+- [Styled components](https://styled-components.com/).
 - [Netlify CMS](https://www.netlifycms.org).
-- [Netlify CMS Locales](https://www.netlifycms.org).
-- [gatsby-plugin-image](https://flow.org/).
-- [PWA](https://flow.org/) support.
+- [Netlify CMS Locales](https://www.npmjs.com/package/netlify-cms-locales).
+- [gatsby-plugin-image](https://www.gatsbyjs.com/plugins/gatsby-plugin-image/).
+<!-- - [PWA](https://web.dev/progressive-web-apps/) support. -->
 
 <!-- ## Features
 + [Mobile-First](https://medium.com/@mrmrs_/mobile-first-css-48bc4cc3f60f) approach in development.
