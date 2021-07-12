@@ -27,11 +27,11 @@
 
 You can edit basic information by:
 
-- Default image - You can change it by replacing default.jpg at src/images - it applies when the blog post has no image provided.
+- Default image - You can change it by replacing default.jpg at src/images (keep the same name "default") - it applies when the blog post has no image provided.
 - Navigation Title - You can edit by changing gatsby-config.js metadata title.
 - Author
   - Author name - You can edit by changing gatsby-config.js metadata.
-  - Author picture - You can change it by replacing author.jpg at src/images.
+  - Author picture - You can change it by replacing author.jpg at src/images (keep the same name "author" or change on gatsby-config.js also).
 - Socials - You can edit by changing gatsby-config.js metadata. If social option is "", it won't show anything, if has any text, will start to show at footer using that text as href link.
 - Color Scheme - You can edit by changing gatsby-config.js.
 
