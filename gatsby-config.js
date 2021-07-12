@@ -152,7 +152,7 @@ module.exports = {
         short_name: `Sakha`,
         start_url: `/`,
         background_color: `#fff`,
-        theme_color: `#280137`,
+        theme_color: `#663399`,
         display: `standalone`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
