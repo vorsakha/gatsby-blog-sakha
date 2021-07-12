@@ -8,7 +8,7 @@ import Seo from "../components/seo"
 
 // Utilities
 import kebabCase from "lodash/kebabCase"
-import getMetadata from "../functions/getMetadata"
+import getMetadata from "../utils/getMetadata"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`

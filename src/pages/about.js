@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 // Utils
-import getMetadata from "../functions/getMetadata"
+import getMetadata from "../utils/getMetadata"
 
 const BlogIndex = () => {
   const { picture, alt } = getMetadata().site.siteMetadata.author

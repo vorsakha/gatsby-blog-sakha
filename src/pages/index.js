@@ -5,12 +5,12 @@ import { RiZzzFill as SleepIcon } from "@react-icons/all-files/ri/RiZzzFill"
 
 // Components
 import ImageComponent from "../components/common/ImageComponent"
-import filterImageString from "../functions/filterImageString"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
 
 // Utils
-import getMetadata from "../functions/getMetadata"
+import getMetadata from "../utils/getMetadata"
+import filterImageString from "../utils/filterImageString"
 
 const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes
