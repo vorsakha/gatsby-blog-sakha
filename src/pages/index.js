@@ -10,6 +10,8 @@ import Layout from "../components/layout"
 // Utils
 import getMetadata from "../functions/getMetadata"
 
+// LCP (maybe placeholder image's fault)
+
 const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes
   const { primary, secondary } = getMetadata().site.siteMetadata.colors
@@ -36,67 +38,65 @@ const BlogIndex = ({ data }) => {
     <Layout>
       <Seo title="Home" />
       <div>
-        <ol>
-          <Masonry
-            breakpointCols={masonryBreakpoints}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column"
-          >
-            {posts.map(post => {
-              const title = post.frontmatter.title || post.fields.slug
+        <Masonry
+          breakpointCols={masonryBreakpoints}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {posts.map(post => {
+            const title = post.frontmatter.title || post.fields.slug
 
-              return (
-                <li key={post.fields.slug} className={`mb-6`}>
-                  <article
-                    className="post-list-item"
-                    itemScope
-                    itemType="http://schema.org/Article"
-                  >
-                    <header>
-                      <h2 className="font-thin">
-                        <Link
-                          className="text-xl font-semibold cursor-pointer hover:underline transition-colors ease-in-out"
-                          to={`/blog${post.fields.slug}`}
-                          style={{ color: secondary }}
-                          itemProp="url"
-                        >
-                          <ImageComponent
-                            image={filterImageString(post.frontmatter.image)}
-                            rounded
-                            grayscale
-                            shadow
-                            hover
-                            alt={title}
-                          />
-                          <span
-                            className="mt-2 font-encode font-light text-xl hover:underline"
-                            itemProp="headline"
-                            style={{ color: primary }}
-                          >
-                            {title}
-                          </span>
-                        </Link>
-                      </h2>
-                      <small className="text-xs" style={{ color: secondary }}>
-                        {post.frontmatter.date} &bull; {post.timeToRead} min.
-                      </small>
-                    </header>
-                    <section>
-                      <p
-                        className="font-light"
+            return (
+              <div key={post.fields.slug} className={`mb-6`}>
+                <article
+                  className="post-list-item"
+                  itemScope
+                  itemType="http://schema.org/Article"
+                >
+                  <header>
+                    <h2 className="font-thin">
+                      <Link
+                        className="text-xl font-semibold cursor-pointer hover:underline transition-colors ease-in-out"
+                        to={`/blog${post.fields.slug}`}
                         style={{ color: secondary }}
-                        dangerouslySetInnerHTML={{
-                          __html: post.frontmatter.description || post.excerpt,
-                        }}
-                        itemProp="description"
-                      />
-                    </section>
-                  </article>
-                </li>
-              )
-            })}
-          </Masonry>
-        </ol>
+                        itemProp="url"
+                      >
+                        <ImageComponent
+                          image={filterImageString(post.frontmatter.image)}
+                          rounded
+                          grayscale
+                          shadow
+                          hover
+                          alt={title}
+                        />
+                        <span
+                          className="mt-2 font-encode font-light text-xl hover:underline"
+                          itemProp="headline"
+                          style={{ color: primary }}
+                        >
+                          {title}
+                        </span>
+                      </Link>
+                    </h2>
+                    <small className="text-xs" style={{ color: secondary }}>
+                      {post.frontmatter.date} &bull; {post.timeToRead} min.
+                    </small>
+                  </header>
+                  <section>
+                    <p
+                      className="font-light"
+                      style={{ color: secondary }}
+                      dangerouslySetInnerHTML={{
+                        __html: post.frontmatter.description || post.excerpt,
+                      }}
+                      itemProp="description"
+                    />
+                  </section>
+                </article>
+              </div>
+            )
+          })}
+        </Masonry>
       </div>
     </Layout>
   )

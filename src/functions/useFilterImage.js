@@ -8,14 +8,13 @@ const useFilterImage = (src, grayscale) => {
     query {
       allImageSharp {
         nodes {
-          gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+          gatsbyImageData(layout: CONSTRAINED)
         }
       }
       grayscale: allImageSharp {
         nodes {
           gatsbyImageData(
             layout: CONSTRAINED
-            placeholder: BLURRED
             transformOptions: { grayscale: true }
           )
         }

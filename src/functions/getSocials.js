@@ -27,6 +27,7 @@ const getSocials = object => {
             className="p-4 px-4 pl-0 text-2xl font-bold hover:underline"
             href={item[1]}
             target="__blank"
+            name="Instagram"
           >
             <InstagramIcon className="-mt-0.5" />
           </a>
@@ -38,6 +39,7 @@ const getSocials = object => {
             className="p-4 px-4 pl-0 text-xl font-bold hover:underline"
             href={item[1]}
             target="__blank"
+            name="Facebook"
           >
             <FacebookIcon />
           </a>
@@ -49,6 +51,7 @@ const getSocials = object => {
             className="p-4 px-4 pl-0 text-xl font-bold hover:underline"
             href={item[1]}
             target="__blank"
+            name="Twitter"
           >
             <TwitterIcon />
           </a>
@@ -60,6 +63,7 @@ const getSocials = object => {
             className="p-4 px-4 pl-0 text-xl font-bold hover:underline"
             href={item[1]}
             target="__blank"
+            name="LinkedIn"
           >
             <LinkedinIcon />
           </a>
@@ -71,6 +75,7 @@ const getSocials = object => {
             className="p-4 px-4 pl-0 text-xl font-bold hover:underline"
             href={item[1]}
             target="__blank"
+            name="Twitch"
           >
             <TwitchIcon />
           </a>
@@ -82,6 +87,7 @@ const getSocials = object => {
             className="p-4 px-4 pl-0 text-2xl font-bold hover:underline"
             href={item[1]}
             target="__blank"
+            name="Dev.to"
           >
             <DevIcon className="-mt-0.5" />
           </a>
