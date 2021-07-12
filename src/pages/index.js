@@ -15,6 +15,7 @@ import filterImageString from "../utils/filterImageString"
 const BlogIndex = ({ data }) => {
   const posts = data.allMarkdownRemark.nodes
   const { primary, secondary } = getMetadata().site.siteMetadata.colors
+  const { title } = getMetadata().site.siteMetadata
 
   // Pagination
   const [items, setItems] = React.useState(5)
@@ -29,7 +30,7 @@ const BlogIndex = ({ data }) => {
   if (posts.length === 0) {
     return (
       <Layout>
-        <Seo title="Home" />
+        <Seo title={title} />
         <div className="flex flex-row items-center">
           <SleepIcon className="mr-2 text-2xl" />
           <span> No blog posts yet.</span>
@@ -47,7 +48,7 @@ const BlogIndex = ({ data }) => {
 
   return (
     <Layout scroll>
-      <Seo title="Home" />
+      <Seo title={title} />
       <div>
         <Masonry
           breakpointCols={masonryBreakpoints}
