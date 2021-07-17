@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
-import PropTypes from "prop-types"
 
 // Components
 import BlogLayout from "../components/blogLayout"
@@ -11,8 +10,43 @@ import BlogHero from "../components/BlogHero"
 // Utils
 import kebabCase from "lodash/kebabCase"
 
-const BlogPostTemplate = ({ data }) => {
-  const [queryImg, setQuery] = React.useState()
+// Types
+type BlogPostTypes = {
+  data: {
+    previous: {
+      fields: {
+        slug: string
+      }
+      frontmatter: {
+        title: string
+      }
+    }
+    next: {
+      fields: {
+        slug: string
+      }
+      frontmatter: {
+        title: string
+      }
+    }
+    markdownRemark: {
+      id: string
+      excerpt: string
+      html: string
+      timeToRead: number
+      frontmatter: {
+        title: string
+        date: string
+        description: string
+        image: string
+        tags: string[]
+      }
+    }
+  }
+}
+
+const BlogPostTemplate: React.FC<BlogPostTypes> = ({ data }): JSX.Element => {
+  const [queryImg, setQuery] = React.useState<string>("")
 
   const post = data.markdownRemark
   const { previous, next } = data
@@ -38,7 +72,6 @@ const BlogPostTemplate = ({ data }) => {
             title: post.frontmatter.title,
             image: queryImg,
           }}
-          grayscale
           thin
           rounded
           //attach
@@ -95,10 +128,6 @@ const BlogPostTemplate = ({ data }) => {
       </BlogLayout>
     </Layout>
   )
-}
-
-BlogPostTemplate.propTypes = {
-  data: PropTypes.object,
 }
 
 export default BlogPostTemplate
