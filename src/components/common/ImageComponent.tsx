@@ -1,15 +1,32 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import styled from "styled-components"
-import PropTypes from "prop-types"
 
 // Utils
 import getMetadata from "../../utils/getMetadata"
 import useFilterImage from "../../utils/useFilterImage"
 
+// Types
+type ImageTypes = {
+  rounded?: boolean
+  image: string
+  hover?: boolean
+  shadow?: boolean
+  alt: string
+  forceheight?: boolean
+}
+type ImageStyledTypes = {
+  rounded?: boolean
+  hover?: boolean
+  shadow?: boolean
+  forceheight?: boolean
+}
+
+// Styled Components
 const Img = styled(GatsbyImage)`
   width: 100% !important;
-  height: ${({ forceheight }) => (forceheight ? "100% !important" : "auto")};
+  height: ${(props: ImageStyledTypes) =>
+    props.forceheight ? "100% !important" : "auto"};
   animation: 0.2s fade;
   overflow: hidden;
   max-height: none;
@@ -51,7 +68,7 @@ const Img = styled(GatsbyImage)`
   }
 `
 
-const Image = ({
+const Image: React.FC<ImageTypes> = ({
   rounded,
   image,
   hover,
@@ -59,7 +76,7 @@ const Image = ({
   alt,
   forceheight,
   // grayscale,
-}) => {
+}): JSX.Element => {
   const { grayscale } = getMetadata().site.siteMetadata.colors
   return (
     <Img
@@ -71,15 +88,6 @@ const Image = ({
       forceheight={forceheight}
     />
   )
-}
-
-Image.propTypes = {
-  image: PropTypes.string,
-  rounded: PropTypes.bool,
-  alt: PropTypes.string,
-  hover: PropTypes.bool,
-  shadow: PropTypes.bool,
-  forceheight: PropTypes.bool,
 }
 
 export default Image

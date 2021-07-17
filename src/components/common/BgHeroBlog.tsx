@@ -1,12 +1,23 @@
 import React from "react"
 import styled from "styled-components"
-import PropTypes from "prop-types"
 
 // Utils
 import getMetadata from "../../utils/getMetadata"
 import handleHexToRgba from "../../utils/handleHexToRgba"
 import useFilterImage from "../../utils/useFilterImage"
 
+// Types
+type HeroImageBgTypes = {
+  attach?: boolean
+  image: string
+  rounded?: boolean
+}
+
+type HeroImageStyledTypes = {
+  rounded?: boolean
+  bg?: string[]
+  attach?: boolean
+}
 // Styled components
 const GradientHero = styled.div`
   margin-top: 0;
@@ -15,7 +26,8 @@ const GradientHero = styled.div`
   background-image: ${({ image }) => `url(${image})`};
   background-size: cover;
   background-position: center;
-  background-attachment: ${({ attach }) => (attach ? "fixed" : "scroll")};
+  background-attachment: ${(props: HeroImageBgTypes) =>
+    props.attach ? "fixed" : "scroll"};
   width: 100% !important;
   border-radius: ${({ rounded }) => (rounded ? "4px" : "0")};
 
@@ -29,7 +41,7 @@ const GradientHero = styled.div`
   }
 `
 const Overlay = styled.div`
-  background: ${({ bg }) => bg};
+  background: ${(props: HeroImageStyledTypes) => props.bg};
   padding: 1rem 0;
   border-radius: ${({ rounded }) => (rounded ? "4px" : "0")};
   height: 200px;
@@ -44,7 +56,12 @@ const Overlay = styled.div`
   }
 `
 
-const HeroImageBg = ({ children, attach, image, rounded }) => {
+const HeroImageBg: React.FC<HeroImageBgTypes> = ({
+  children,
+  attach,
+  image,
+  rounded,
+}): JSX.Element => {
   const { grayscale, primary, secondary } =
     getMetadata().site.siteMetadata.colors
 
@@ -70,13 +87,6 @@ const HeroImageBg = ({ children, attach, image, rounded }) => {
       </GradientHero>
     </>
   )
-}
-
-HeroImageBg.propTypes = {
-  children: PropTypes.node.isRequired,
-  attach: PropTypes.bool,
-  image: PropTypes.string,
-  rounded: PropTypes.bool,
 }
 
 export default HeroImageBg
