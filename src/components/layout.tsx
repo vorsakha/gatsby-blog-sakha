@@ -41,7 +41,7 @@ const Layout: React.FC<LayoutTypes> = (props): JSX.Element => {
       <nav className="flex flex-col m-auto w-full py-4 mt-8 mb-4">
         <div className="p-4 px-4 pl-0">
           <Link
-            className="font-encode flex flex-row w-full items-center text-3xl md:text-6xl font-bold"
+            className="font-encode flex flex-row w-full items-center text-light text-4xl md:text-6xl"
             to="/"
             style={{ color: primary }}
           >

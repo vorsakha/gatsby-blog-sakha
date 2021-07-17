@@ -2,7 +2,7 @@
   "name": "sakha-blog",
   "private": true,
   "description": "A minimal design starter for a blog powered by Gatsby and Markdown",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "@tsaristbomba",
   "keywords": [
     "gatsby",
