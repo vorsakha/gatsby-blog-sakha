@@ -1,6 +1,17 @@
 import React from "react"
 import styled from "styled-components"
-import PropTypes from "prop-types"
+
+// Types
+type ProgressBarTypes = {
+  thick?: boolean
+  regular?: boolean
+  colors?: {
+    primary: string
+    primaryDark: string
+  }
+  primary?: string
+  primaryDark?: string
+}
 
 // Styled components
 const BarContainer = styled.div`
@@ -10,33 +21,31 @@ const BarContainer = styled.div`
   width: 100%;
   top: 0;
   left: 0;
-  height: ${({ thick }) => (thick ? "6px" : "3px")};
+  height: ${(props: ProgressBarTypes) => (props.thick ? "6px" : "3px")};
 `
 const Bar = styled.div`
-  background: ${({ colors }) =>
-    colors &&
-    `linear-gradient(
-    to left,
-    ${colors.primary},
-    ${colors.primaryDark}
-  )`};
+  background: ${({ primary, primaryDark, colors }) =>
+    colors && `linear-gradient( to left, ${primary}, ${primaryDark})`};
   transform-origin: top left;
   transform: scale(0, 0);
   opacity: 1;
-  height: ${({ thick }) => (thick ? "6px" : "3px")};
+  height: ${(props: ProgressBarTypes) => (props.thick ? "6px" : "3px")};
 `
 
-const ProgressBar = ({ thick, colors }) => {
-  const [scroll, setScroll] = React.useState(0)
+const ProgressBar: React.FC<ProgressBarTypes> = ({
+  thick,
+  colors,
+}): JSX.Element => {
+  const [scroll, setScroll] = React.useState<string>("0")
 
   function handleProgress() {
     const totalScroll = document.documentElement.scrollTop
     const windowHeight =
       document.documentElement.scrollHeight -
       document.documentElement.clientHeight
-    const scroll = `${totalScroll / windowHeight}`
+    const scrollNumber = `${totalScroll / windowHeight}`
 
-    setScroll(scroll)
+    setScroll(scrollNumber)
   }
 
   React.useEffect(() => {
@@ -54,12 +63,6 @@ const ProgressBar = ({ thick, colors }) => {
       />
     </BarContainer>
   )
-}
-
-ProgressBar.propTypes = {
-  thick: PropTypes.bool,
-  regular: PropTypes.bool,
-  colors: PropTypes.object,
 }
 
 export default ProgressBar

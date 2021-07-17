@@ -1,12 +1,19 @@
 import React from "react"
 import styled from "styled-components"
-import PropTypes from "prop-types"
 
 // Components
 import BgHeroBlog from "./common/BgHeroBlog"
 
-// Utils
-import getMetadata from "../utils/getMetadata"
+// Types
+type HeroTypes = {
+  rounded?: boolean
+  data?: {
+    image: string
+    title: string
+  }
+  attach?: boolean
+  thin?: boolean
+}
 
 // Styled components
 const BgItems = styled.div`
@@ -37,7 +44,7 @@ const BgItemsChildren = styled.div`
   h1 {
     width: 100%;
     text-transform: uppercase;
-    font-weight: ${({ thin }) => (thin ? "300" : " bold")};
+    font-weight: ${(props: HeroTypes) => (props.thin ? "300" : " bold")};
     text-align: center;
   }
 
@@ -52,17 +59,15 @@ const BgItemsChildren = styled.div`
   }
 `
 
-const Hero = ({ rounded, data, attach, thin }) => {
-  const { grayscale } = getMetadata().site.siteMetadata.colors
-
+const Hero: React.FC<HeroTypes> = ({
+  rounded,
+  data,
+  attach,
+  thin,
+}): JSX.Element => {
   return (
     <>
-      <BgHeroBlog
-        attach={attach}
-        image={data.image}
-        rounded={rounded}
-        grayscale={grayscale}
-      >
+      <BgHeroBlog attach={attach} image={data.image} rounded={rounded}>
         <BgItems>
           <BgItemsChildren thin={thin}>
             <h1>{data.title}</h1>
@@ -71,13 +76,6 @@ const Hero = ({ rounded, data, attach, thin }) => {
       </BgHeroBlog>
     </>
   )
-}
-
-Hero.propTypes = {
-  rounded: PropTypes.bool,
-  data: PropTypes.object,
-  attach: PropTypes.bool,
-  thin: PropTypes.bool,
 }
 
 export default Hero

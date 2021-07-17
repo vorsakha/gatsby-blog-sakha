@@ -1,9 +1,19 @@
 import * as React from "react"
 import styled from "styled-components"
-import PropTypes from "prop-types"
 
 // Utils
 import getMetadata from "../utils/getMetadata"
+
+// Types
+type BlogLayoutTypes = {
+  shadow?: boolean
+  colors?: {
+    primary: string
+    tertiary: string
+    secondary: string
+  }
+  grayscale?: boolean
+}
 
 // Styled components
 const Main = styled.main`
@@ -15,7 +25,7 @@ const Main = styled.main`
 
   a {
     text-decoration: none;
-    color: ${({ colors }) => colors.tertiary};
+    color: ${(props: BlogLayoutTypes) => props.colors.tertiary};
     font-weight: 300;
     background-color: ${({ colors }) => colors.primary};
     padding: 0 3px;
@@ -27,7 +37,7 @@ const Main = styled.main`
   }
 
   small {
-    color: ${({ colors }) => colors.secondary};
+    color: ${(props: BlogLayoutTypes) => props.colors.secondary};
   }
 
   header {
@@ -129,7 +139,10 @@ const Main = styled.main`
   }
 `
 
-const BlogLayout = ({ children, shadow }) => {
+const BlogLayout: React.FC<BlogLayoutTypes> = ({
+  children,
+  shadow,
+}): JSX.Element => {
   const { primary, secondary, tertiary, grayscale } =
     getMetadata().site.siteMetadata.colors
 
@@ -142,11 +155,6 @@ const BlogLayout = ({ children, shadow }) => {
       {children}
     </Main>
   )
-}
-
-BlogLayout.propTypes = {
-  children: PropTypes.node.isRequired,
-  shadow: PropTypes.bool,
 }
 
 export default BlogLayout

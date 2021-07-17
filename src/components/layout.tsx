@@ -9,7 +9,16 @@ import ProgressBar from "./ProgressBar"
 import getMetadata from "../utils/getMetadata"
 import getSocials from "../utils/getSocials"
 
-const Layout = props => {
+// scroll
+// progress
+
+// Types
+type LayoutTypes = {
+  scroll: boolean
+  progress: boolean
+}
+
+const Layout: React.FC<LayoutTypes> = (props): JSX.Element => {
   const year = new Date().getFullYear()
 
   const { title, description, author } = getMetadata().site.siteMetadata
@@ -87,6 +96,7 @@ const Layout = props => {
           data={{
             message: "To the top",
           }}
+          msg={false}
           rounded
         />
       )}
