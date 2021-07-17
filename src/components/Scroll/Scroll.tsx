@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import { BsArrowUp } from "@react-icons/all-files/bs/BsArrowUp"
-import PropTypes from "prop-types"
 
 // Components
 import Tooltip from "./Tooltip"
@@ -10,9 +9,31 @@ import Tooltip from "./Tooltip"
 import getMetadata from "../../utils/getMetadata"
 import handleHexToRgba from "../../utils/handleHexToRgba"
 
+// Types
+type ScrollButtonTypes = {
+  rounded?: boolean
+  data: { message: string }
+  msg?: boolean
+}
+type ScrollButtonStyledTypes = {
+  rounded?: boolean
+  colors: {
+    primary?: string
+    secondary?: string
+    tertiary?: string
+  }
+  scrolled?: boolean
+}
+type MetadataColorsTypes = {
+  primary?: string
+  secondary?: string
+  tertiary?: string
+}
+
 // Styled components
 const Button = styled.button`
-  display: ${({ scrolled }) => (scrolled ? "flex" : "none")};
+  display: ${(props: ScrollButtonStyledTypes) =>
+    props.scrolled ? "flex" : "none"};
   z-index: 12;
   position: fixed;
   bottom: 7.3vh;
@@ -67,14 +88,18 @@ const Button = styled.button`
 `
 const Arrow = styled(BsArrowUp)`
   font-size: 1.5rem;
-  color: ${({ colors }) => colors.tertiary};
+  color: ${(props: ScrollButtonStyledTypes) => props.colors.tertiary};
 `
 
-const ScrollButton = ({ rounded, data, msg }) => {
-  const [scrolled, setScrolled] = useState(false)
-  const [tooltip, setTooltip] = React.useState(true)
+const ScrollButton: React.FC<ScrollButtonTypes> = ({
+  rounded,
+  data,
+  msg,
+}): JSX.Element => {
+  const [scrolled, setScrolled] = useState<boolean>(false)
+  const [tooltip, setTooltip] = React.useState<boolean>(true)
 
-  const { primary, secondary, tertiary } =
+  const { primary, secondary, tertiary }: MetadataColorsTypes =
     getMetadata().site.siteMetadata.colors
 
   function scrollToTop() {
@@ -123,21 +148,12 @@ const ScrollButton = ({ rounded, data, msg }) => {
     >
       <Arrow colors={{ tertiary }} />
       {tooltip && (
-        <Tooltip
-          colors={{ primary, tertiary, secondary }}
-          small
-          rounded={rounded}
-        >
+        <Tooltip colors={{ primary, tertiary }} rounded={rounded}>
           {data.message}
         </Tooltip>
       )}
     </Button>
   )
-}
-
-ScrollButton.propTypes = {
-  data: PropTypes.object.isRequired,
-  rounded: PropTypes.bool,
 }
 
 export default ScrollButton

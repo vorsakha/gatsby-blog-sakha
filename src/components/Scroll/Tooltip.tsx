@@ -1,6 +1,22 @@
 import React from "react"
 import styled from "styled-components"
-import PropTypes from "prop-types"
+
+// Types
+type TooltipTypes = {
+  rounded?: boolean
+  colors: {
+    primary: string
+    tertiary: string
+  }
+}
+
+type TooltipStyledTypes = {
+  rounded: boolean
+  colors: {
+    primary: string
+    tertiary: string
+  }
+}
 
 // Styled components
 const TooltipWrapper = styled.div`
@@ -12,7 +28,7 @@ const TooltipWrapper = styled.div`
     /* bottom: 7vh; */
     opacity: 1;
     right: 13.8vh;
-    background: ${({ colors }) => colors.primary};
+    background: ${(props: TooltipStyledTypes) => props.colors.primary};
     color: ${({ colors }) => colors.tertiary};
     padding: 0 10px;
     display: inline-flex;
@@ -37,18 +53,16 @@ const TooltipWrapper = styled.div`
   }
 `
 
-const Tooltip = ({ children, rounded, colors }) => {
+const Tooltip: React.FC<TooltipTypes> = ({
+  children,
+  rounded,
+  colors,
+}): JSX.Element => {
   return (
     <TooltipWrapper colors={colors} rounded={rounded}>
       {children}
     </TooltipWrapper>
   )
-}
-
-Tooltip.propTypes = {
-  children: PropTypes.node.isRequired,
-  colors: PropTypes.object,
-  rounded: PropTypes.bool,
 }
 
 export default Tooltip
