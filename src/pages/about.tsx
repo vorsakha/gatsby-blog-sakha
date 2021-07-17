@@ -8,8 +8,14 @@ import Seo from "../components/seo"
 // Utils
 import getMetadata from "../utils/getMetadata"
 
-const BlogIndex = () => {
-  const { picture, alt } = getMetadata().site.siteMetadata.author
+// Types
+type AboutTypes = {
+  picture: string
+  alt: string
+}
+
+const About: React.FC = (): JSX.Element => {
+  const { picture, alt }: AboutTypes = getMetadata().site.siteMetadata.author
 
   return (
     <Layout scroll>
@@ -32,11 +38,11 @@ const BlogIndex = () => {
           </p>
         </div>
         <div>
-          <ImageComponent image={picture} alt={alt} rounded shadow grayscale />
+          <ImageComponent image={picture} alt={alt} rounded shadow />
         </div>
       </div>
     </Layout>
   )
 }
 
-export default BlogIndex
+export default About

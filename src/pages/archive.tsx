@@ -10,16 +10,43 @@ import Seo from "../components/seo"
 import kebabCase from "lodash/kebabCase"
 import getMetadata from "../utils/getMetadata"
 
-const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
+// Types
+type MetadataTypes = {
+  primary: string
+  tertiary: string
+}
+type ArchiveTypes = {
+  data: {
+    allMarkdownRemark: {
+      group: {
+        fieldValue: string
+        totalCount: number
+      }[]
+      nodes: {
+        excerpt: string
+        fields: {
+          slug: string
+        }
+        frontmatter: {
+          date: string
+          title: string
+          description: string
+        }
+      }[]
+    }
+  }
+}
+
+const Archive: React.FC<ArchiveTypes> = ({ data }): JSX.Element => {
   const posts = data.allMarkdownRemark.nodes
   const tags = data.allMarkdownRemark.group
 
-  const { primary, tertiary } = getMetadata().site.siteMetadata.colors
+  const { primary, tertiary }: MetadataTypes =
+    getMetadata().site.siteMetadata.colors
 
   if (posts.length === 0) {
     return (
-      <Layout location={location} title={siteTitle}>
+      <Layout>
         <Seo title="Archive" />
         <div className="flex flex-row items-center">
           <SleepIcon className="mr-2 text-2xl" />
@@ -93,7 +120,7 @@ const BlogIndex = ({ data, location }) => {
   )
 }
 
-export default BlogIndex
+export default Archive
 
 export const pageQuery = graphql`
   query {

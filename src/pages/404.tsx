@@ -5,7 +5,7 @@ import { RiBugLine as ErrorIcon } from "@react-icons/all-files/ri/RiBugLine"
 import Seo from "../components/seo"
 import Layout from "../components/layout"
 
-const ErrorPage = () => {
+const ErrorPage: React.FC = (): JSX.Element => {
   return (
     <Layout>
       <Seo title="Error" />

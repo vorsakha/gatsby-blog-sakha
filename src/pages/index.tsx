@@ -12,10 +12,37 @@ import Layout from "../components/layout"
 import getMetadata from "../utils/getMetadata"
 import filterImageString from "../utils/filterImageString"
 
-const BlogIndex = ({ data }) => {
+// Types
+type BlogIndexTypes = {
+  data: {
+    allMarkdownRemark: {
+      nodes: {
+        timeToRead: number
+        excerpt: string
+        fields: {
+          slug: string
+        }
+        frontmatter: {
+          date: string
+          title: string
+          description: string
+          image: string
+        }
+      }[]
+    }
+  }
+}
+type MetadataTypes = {
+  primary?: string
+  secondary?: string
+  title?: string
+}
+
+const BlogIndex: React.FC<BlogIndexTypes> = ({ data }): JSX.Element => {
   const posts = data.allMarkdownRemark.nodes
-  const { primary, secondary } = getMetadata().site.siteMetadata.colors
-  const { title } = getMetadata().site.siteMetadata
+  const { primary, secondary }: MetadataTypes =
+    getMetadata().site.siteMetadata.colors
+  const { title }: MetadataTypes = getMetadata().site.siteMetadata
 
   // Pagination
   const [items, setItems] = React.useState(5)
@@ -77,7 +104,6 @@ const BlogIndex = ({ data }) => {
                           <ImageComponent
                             image={filterImageString(post.frontmatter.image)}
                             rounded
-                            grayscale
                             shadow
                             hover
                             alt={title}

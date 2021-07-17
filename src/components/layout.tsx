@@ -14,8 +14,8 @@ import getSocials from "../utils/getSocials"
 
 // Types
 type LayoutTypes = {
-  scroll: boolean
-  progress: boolean
+  scroll?: boolean
+  progress?: boolean
 }
 
 const Layout: React.FC<LayoutTypes> = (props): JSX.Element => {

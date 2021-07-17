@@ -75,7 +75,6 @@ const Image: React.FC<ImageTypes> = ({
   shadow,
   alt,
   forceheight,
-  // grayscale,
 }): JSX.Element => {
   const { grayscale } = getMetadata().site.siteMetadata.colors
   return (
