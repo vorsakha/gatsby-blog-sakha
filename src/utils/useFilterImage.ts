@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 
-const useFilterImage = (src, grayscale) => {
+const useFilterImage = (src: string, grayscale: boolean) => {
   let arr
   let image
 

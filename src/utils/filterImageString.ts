@@ -1,4 +1,4 @@
-const filterImageString = string => {
+const filterImageString = (string: string) => {
   return string !== null ? string.match("[^/]+$")[0] : "default"
 }
 

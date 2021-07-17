@@ -1,4 +1,4 @@
-const handleHexToRgba = (hex, opacity) => {
+const handleHexToRgba = (hex: string, opacity: number) => {
   let result = hex
     .replace(
       /^#?([a-f\d])([a-f\d])([a-f\d])$/i,
